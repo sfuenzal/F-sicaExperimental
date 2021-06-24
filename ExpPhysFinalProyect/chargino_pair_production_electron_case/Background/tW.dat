@@ -1,0 +1,14 @@
+set group_subprocesses Auto
+import model sm
+generate g b > t w-
+output tW
+launch -i
+multi_run 3
+pythia=ON
+pgs=OFF
+delphes=ON
+set ebeam1 7000
+set ebeam2 7000
+set nevents 1000
+print_results --path=tW/cs.txt --format=short
+
