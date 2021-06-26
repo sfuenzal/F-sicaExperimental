@@ -112,25 +112,29 @@ class Open
              }
           
          TCanvas *c1 = new TCanvas("c1", "c1", 1024, 800);
-	 h1 -> Draw("e1");
+         h1 -> SetStats(0);
+         h1 -> Draw("e1");
          c1 -> Print("E.png");
-	 
-         TCanvas *c2 = new TCanvas("c2", "c2", 1024, 800);
-         h2 -> Draw("e1");
-       	 c2 -> Print("Pt.png");
 
-         TCanvas *c3 = new TCanvas("c3", "c3", 1024, 800);         
+         TCanvas *c2 = new TCanvas("c2", "c2", 1024, 800);
+         h2 -> SetStats(0);
+         h2 -> Draw("e1");
+         c2 -> Print("Pt.png");
+
+         TCanvas *c3 = new TCanvas("c3", "c3", 1024, 800);
+         h3 -> SetStats(0);
          h3 -> Draw("e1");
-       	 c3 -> Print("Eta.png");
-         
+         c3 -> Print("Eta.png");
+
          TCanvas *c4 = new TCanvas("c4", "c4", 1024, 800);
+         h4 -> SetStats(0);
          h4 -> Draw("e1");
-       	 c4 -> Print("Phi.png");
+         c4 -> Print("Phi.png");
 	
          TCanvas *c5 = new TCanvas("c5", "c5", 1024, 800);
+         h5 -> SetStats(0);
          h5 -> Draw("e1");
          c5 -> Print("Chargino_mass.png");
-
        
 	}
 };
