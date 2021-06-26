@@ -26,25 +26,36 @@ class Open
     public:
         void OpenROOTFile()
         {
-            TString path = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/Data/output_simulated_data_two/Events/";
+            TChain *fChain = new TChain("LHEF"); 
 
-            TChain *fChain = new TChain("LHEF");
-	
-            fChain -> AddFile(path + "run_01" + "/" + "unweighted_events.root");
+            //Data
+            TString path_data = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/Data/output_simulated_data_two/Events/";
             
-	    for (unsigned int i = 0; i < 3; ++i) 
+	    //Background
+            //ttbar	    
+    	    TString path_background_ttbar = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/Background/ttbar/Events/";
+	    //WW
+            TString path_background_WW = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/Background/WW/Events/";
+           
+            fChain -> AddFile(path_data + "run_01" + "/" + "unweighted_events.root");
+            fChain -> AddFile(path_background_ttbar + "run_01" + "/" + "unweighted_events.root");	 
+            fChain -> AddFile(path_background_WW + "run_01" + "/" + "unweighted_events.root");	    
+
+            for (unsigned int i = 0; i < 3; ++i)
             {
-                fChain -> AddFile(path + "run_01_" + to_string(i) + "/" + "unweighted_events.root");
+             	fChain -> AddFile(path_data + "run_01_" + to_string(i) + "/" + "unweighted_events.root");
+		fChain -> AddFile(path_background_ttbar + "run_01_" + to_string(i) + "/" + "unweighted_events.root");
+		fChain -> AddFile(path_background_WW + "run_01_" + to_string(i) + "/" + "unweighted_events.root");
             }
 
-            unsigned int nentries = (unsigned int) fChain -> GetEntries();
+	    unsigned int nentries = (unsigned int) fChain -> GetEntries();
             cout << "Total number of entries to analyse: " << nentries << endl;
             cout << "" << endl;
   
-	    for(unsigned int i = 0; i < 1; ++i)
-            {
-                fChain -> Show(i);
-            }
+	    //for(unsigned int i = 0; i < 1; ++i)
+            //{
+                //fChain -> Show(i);
+            //}
             
             //Need this to correctly read TTree branches
             fChain -> SetMakeClass(1);
@@ -89,53 +100,53 @@ class Open
 	    TH1F *h5 = new TH1F("h5", "Chargino mass; M [GeV]; Events", 50, 0, 1000);            
 
             //Loop over events
-            for(Long64_t i = 0; i < fChain -> GetEntries(); ++i) 
-            {
-            	fChain -> GetEntry(i);
-		TLorentzVector chargino (0,0,0,0);
+            //for(Long64_t i = 0; i < fChain -> GetEntries(); ++i) 
+            //{
+            	//fChain -> GetEntry(i);
+		//TLorentzVector chargino (0,0,0,0);
                 //Loop over particles
-      		for (Int_t j = 0; j < Particle_; j++) 
-		{
-			h1 -> Fill(E[j]);
-			h2 -> Fill(Pt[j]);
-			h3 -> Fill(Eta[j]);
-			h4 -> Fill(Phi[j]);
-			if(std::abs(PID[j]) == 1000024)
-			{
-            			TLorentzVector temp;
-            			temp.SetPtEtaPhiE(Pt[j], Eta[j], Phi[j], E[j]);
-            			chargino += temp;
+      		//for (Int_t j = 0; j < Particle_; j++) 
+		//{
+			//h1 -> Fill(E[j]);
+			//h2 -> Fill(Pt[j]);
+			//h3 -> Fill(Eta[j]);
+			//h4 -> Fill(Phi[j]);
+			//if(std::abs(PID[j]) == 1000024)
+			//{
+            			//TLorentzVector temp;
+            			//temp.SetPtEtaPhiE(Pt[j], Eta[j], Phi[j], E[j]);
+            			//chargino += temp;
 				//cout << "M = " << chargino.M() << endl;
-				h5 -> Fill(chargino.M());
-      			}
-      		}            
-             }
+				//h5 -> Fill(chargino.M());
+      			//}
+      		//}            
+             //}
           
-         TCanvas *c1 = new TCanvas("c1", "c1", 1024, 800);
-	 h1 -> Draw("e1");
-         c1 -> Print("E.png");
+         //TCanvas *c1 = new TCanvas("c1", "c1", 1024, 800);
+	 //h1 -> Draw("e1");
+         //c1 -> Print("E.png");
 	 
-         TCanvas *c2 = new TCanvas("c2", "c2", 1024, 800);
-         h2 -> Draw("e1");
-       	 c2 -> Print("Pt.png");
+         //TCanvas *c2 = new TCanvas("c2", "c2", 1024, 800);
+         //h2 -> Draw("e1");
+       	 //c2 -> Print("Pt.png");
 
-         TCanvas *c3 = new TCanvas("c3", "c3", 1024, 800);         
-         h3 -> Draw("e1");
-       	 c3 -> Print("Eta.png");
+         //TCanvas *c3 = new TCanvas("c3", "c3", 1024, 800);         
+         //h3 -> Draw("e1");
+       	 //c3 -> Print("Eta.png");
          
-         TCanvas *c4 = new TCanvas("c4", "c4", 1024, 800);
-         h4 -> Draw("e1");
-       	 c4 -> Print("Phi.png");
+         //TCanvas *c4 = new TCanvas("c4", "c4", 1024, 800);
+         //h4 -> Draw("e1");
+       	 //c4 -> Print("Phi.png");
 	
-         TCanvas *c5 = new TCanvas("c5", "c5", 1024, 800);
-         h5 -> Draw("e1");
-         c5 -> Print("Chargino_mass.png");
+         //TCanvas *c5 = new TCanvas("c5", "c5", 1024, 800);
+         //h5 -> Draw("e1");
+         //c5 -> Print("Chargino_mass.png");
 
        
 	}
 };
 
-void FirstReport()
+void SecondReport()
 {
     Open *obj1 = new Open();
     obj1 -> OpenROOTFile();
