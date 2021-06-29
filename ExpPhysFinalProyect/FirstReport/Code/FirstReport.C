@@ -26,12 +26,10 @@ class Open
     public:
         void OpenROOTFile()
         {
-            TString path = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/Data/output_simulated_data_two/Events/";
+            TString path = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/output_simulated_data_two/Events/";
 
             TChain *fChain = new TChain("LHEF");
-	
-            fChain -> AddFile(path + "run_01" + "/" + "unweighted_events.root");
-            
+	   
 	    for (unsigned int i = 0; i < 3; ++i) 
             {
                 fChain -> AddFile(path + "run_01_" + to_string(i) + "/" + "unweighted_events.root");
