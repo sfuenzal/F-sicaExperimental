@@ -1,8 +1,8 @@
 void SecondReport_Plotting()
 {
 	TFile *f1 = TFile::Open("Hists_output_simulated_data_two.root", "READ");
-  	TFile *f2 = TFile::Open("Hists_ttbar.root"                    , "READ");
-  	TFile *f3 = TFile::Open("Hists_WW.root"                       , "READ");
+  	TFile *f2 = TFile::Open("Hists_WW.root"                       , "READ");
+  	TFile *f3 = TFile::Open("Hists_ttbar.root"                    , "READ");
 
 	TCanvas *c = new TCanvas("c1", "c1", 1024, 800);
 
@@ -10,8 +10,8 @@ void SecondReport_Plotting()
 	// Hist Electron PT  
 
   	TH1F *histElectronPT_Data  = (TH1F*) f1 -> Get("histElectronPT");
-  	TH1F *histElectronPT_ttbar = (TH1F*) f2 -> Get("histElectronPT");
-  	TH1F *histElectronPT_WW    = (TH1F*) f3 -> Get("histElectronPT");
+  	TH1F *histElectronPT_WW = (TH1F*) f2 -> Get("histElectronPT");
+  	TH1F *histElectronPT_ttbar    = (TH1F*) f3 -> Get("histElectronPT");
 
   	THStack *hs_histElectronPT = new THStack("hs_histElectronPT", "");
 
@@ -20,21 +20,21 @@ void SecondReport_Plotting()
   	leg_histElectronPT -> SetFillColor(0);
 
   	leg_histElectronPT -> AddEntry(histElectronPT_Data , "Data" , "F");
-  	leg_histElectronPT -> AddEntry(histElectronPT_ttbar, "ttbar", "F");
-  	leg_histElectronPT -> AddEntry(histElectronPT_WW   , "WW"   , "F");
+  	leg_histElectronPT -> AddEntry(histElectronPT_WW, "WW", "F");
+  	leg_histElectronPT -> AddEntry(histElectronPT_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histElectronPT_Data  -> SetLineColor(kBlue);
-  	histElectronPT_Data  -> Scale((histElectronPT_ttbar -> Integral() + histElectronPT_WW -> Integral())/histElectronPT_Data -> Integral());
-  	histElectronPT_ttbar -> SetLineColor(kBlack);
-  	histElectronPT_ttbar -> SetFillColor(kGreen);
-  	histElectronPT_WW    -> SetLineColor(kBlack);
-  	histElectronPT_WW    -> SetFillColor(kRed);
+  	histElectronPT_Data  -> Scale((histElectronPT_WW -> Integral() + histElectronPT_ttbar -> Integral())/histElectronPT_Data -> Integral());
+  	histElectronPT_WW -> SetLineColor(kBlack);
+  	histElectronPT_WW -> SetFillColor(kGreen);
+  	histElectronPT_ttbar    -> SetLineColor(kBlack);
+  	histElectronPT_ttbar    -> SetFillColor(kRed);
 
-  	hs_histElectronPT -> Add(histElectronPT_ttbar);
   	hs_histElectronPT -> Add(histElectronPT_WW);
+  	hs_histElectronPT -> Add(histElectronPT_ttbar);
 
   	hs_histElectronPT -> Draw("Hist");
   	hs_histElectronPT -> SetTitle("Electron P_{T}");
@@ -52,8 +52,8 @@ void SecondReport_Plotting()
   	c -> Modified();
 
 	TH1F *histElectronEta_Data  = (TH1F*) f1 -> Get("histElectronEta");
-  	TH1F *histElectronEta_ttbar = (TH1F*) f2 -> Get("histElectronEta");
-  	TH1F *histElectronEta_WW    = (TH1F*) f3 -> Get("histElectronEta");
+  	TH1F *histElectronEta_WW = (TH1F*) f2 -> Get("histElectronEta");
+  	TH1F *histElectronEta_ttbar    = (TH1F*) f3 -> Get("histElectronEta");
 
   	THStack *hs_histElectronEta = new THStack("hs_histElectronEta", "");
 
@@ -62,21 +62,21 @@ void SecondReport_Plotting()
   	leg_histElectronEta -> SetFillColor(0);
 
   	leg_histElectronEta -> AddEntry(histElectronEta_Data , "Data" , "F");
-  	leg_histElectronEta -> AddEntry(histElectronEta_ttbar, "ttbar", "F");
-  	leg_histElectronEta -> AddEntry(histElectronEta_WW   , "WW"   , "F");
+  	leg_histElectronEta -> AddEntry(histElectronEta_WW, "WW", "F");
+  	leg_histElectronEta -> AddEntry(histElectronEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histElectronEta_Data  -> SetLineColor(kBlue);
-  	histElectronEta_Data  -> Scale((histElectronEta_ttbar -> Integral() + histElectronEta_WW -> Integral())/histElectronEta_Data -> Integral());
-  	histElectronEta_ttbar -> SetLineColor(kBlack);
-  	histElectronEta_ttbar -> SetFillColor(kGreen);
-  	histElectronEta_WW    -> SetLineColor(kBlack);
-  	histElectronEta_WW    -> SetFillColor(kRed);
+  	histElectronEta_Data  -> Scale((histElectronEta_WW -> Integral() + histElectronEta_ttbar -> Integral())/histElectronEta_Data -> Integral());
+  	histElectronEta_WW -> SetLineColor(kBlack);
+  	histElectronEta_WW -> SetFillColor(kGreen);
+  	histElectronEta_ttbar    -> SetLineColor(kBlack);
+  	histElectronEta_ttbar    -> SetFillColor(kRed);
 
-  	hs_histElectronEta -> Add(histElectronEta_ttbar);
   	hs_histElectronEta -> Add(histElectronEta_WW);
+  	hs_histElectronEta -> Add(histElectronEta_ttbar);
 
   	hs_histElectronEta -> Draw("Hist");
   	hs_histElectronEta -> SetTitle("Electron #eta");
@@ -94,8 +94,8 @@ void SecondReport_Plotting()
   	c -> Modified();
 
 	TH1F *histElectronPhi_Data  = (TH1F*) f1 -> Get("histElectronPhi");
-  	TH1F *histElectronPhi_ttbar = (TH1F*) f2 -> Get("histElectronPhi");
-  	TH1F *histElectronPhi_WW    = (TH1F*) f3 -> Get("histElectronPhi");
+  	TH1F *histElectronPhi_WW = (TH1F*) f2 -> Get("histElectronPhi");
+  	TH1F *histElectronPhi_ttbar    = (TH1F*) f3 -> Get("histElectronPhi");
 
   	THStack *hs_histElectronPhi = new THStack("hs_histElectronPhi", "");
 
@@ -104,21 +104,21 @@ void SecondReport_Plotting()
   	leg_histElectronPhi -> SetFillColor(0);
 
   	leg_histElectronPhi -> AddEntry(histElectronPhi_Data , "Data" , "F");
-  	leg_histElectronPhi -> AddEntry(histElectronPhi_ttbar, "ttbar", "F");
-  	leg_histElectronPhi -> AddEntry(histElectronPhi_WW   , "WW"   , "F");
+  	leg_histElectronPhi -> AddEntry(histElectronPhi_WW, "WW", "F");
+  	leg_histElectronPhi -> AddEntry(histElectronPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histElectronPhi_Data  -> SetLineColor(kBlue);
-  	histElectronPhi_Data  -> Scale((histElectronPhi_ttbar -> Integral() + histElectronPhi_WW -> Integral())/histElectronPhi_Data -> Integral());
-  	histElectronPhi_ttbar -> SetLineColor(kBlack);
-  	histElectronPhi_ttbar -> SetFillColor(kGreen);
-  	histElectronPhi_WW    -> SetLineColor(kBlack);
-  	histElectronPhi_WW    -> SetFillColor(kRed);
+  	histElectronPhi_Data  -> Scale((histElectronPhi_WW -> Integral() + histElectronPhi_ttbar -> Integral())/histElectronPhi_Data -> Integral());
+  	histElectronPhi_WW -> SetLineColor(kBlack);
+  	histElectronPhi_WW -> SetFillColor(kGreen);
+  	histElectronPhi_ttbar    -> SetLineColor(kBlack);
+  	histElectronPhi_ttbar    -> SetFillColor(kRed);
 
-  	hs_histElectronPhi -> Add(histElectronPhi_ttbar);
   	hs_histElectronPhi -> Add(histElectronPhi_WW);
+  	hs_histElectronPhi -> Add(histElectronPhi_ttbar);
 
   	hs_histElectronPhi -> Draw("Hist");
   	hs_histElectronPhi -> SetTitle("Electron #phi");
@@ -134,8 +134,8 @@ void SecondReport_Plotting()
 	// Hist Muon PT  
 
   	TH1F *histMuonPT_Data  = (TH1F*) f1 -> Get("histMuonPT");
-  	TH1F *histMuonPT_ttbar = (TH1F*) f2 -> Get("histMuonPT");
-  	TH1F *histMuonPT_WW    = (TH1F*) f3 -> Get("histMuonPT");
+  	TH1F *histMuonPT_WW = (TH1F*) f2 -> Get("histMuonPT");
+  	TH1F *histMuonPT_ttbar    = (TH1F*) f3 -> Get("histMuonPT");
 
   	THStack *hs_histMuonPT = new THStack("hs_histMuonPT", "");
 
@@ -144,21 +144,21 @@ void SecondReport_Plotting()
   	leg_histMuonPT -> SetFillColor(0);
 
   	leg_histMuonPT -> AddEntry(histMuonPT_Data , "Data" , "F");
-  	leg_histMuonPT -> AddEntry(histMuonPT_ttbar, "ttbar", "F");
-  	leg_histMuonPT -> AddEntry(histMuonPT_WW   , "WW"   , "F");
+  	leg_histMuonPT -> AddEntry(histMuonPT_WW, "WW", "F");
+  	leg_histMuonPT -> AddEntry(histMuonPT_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histMuonPT_Data  -> SetLineColor(kBlue);
-  	histMuonPT_Data  -> Scale((histMuonPT_ttbar -> Integral() + histMuonPT_WW -> Integral())/histMuonPT_Data -> Integral());
-  	histMuonPT_ttbar -> SetLineColor(kBlack);
-  	histMuonPT_ttbar -> SetFillColor(kGreen);
-  	histMuonPT_WW    -> SetLineColor(kBlack);
-  	histMuonPT_WW    -> SetFillColor(kRed);
+  	histMuonPT_Data  -> Scale((histMuonPT_WW -> Integral() + histMuonPT_ttbar -> Integral())/histMuonPT_Data -> Integral());
+  	histMuonPT_WW -> SetLineColor(kBlack);
+  	histMuonPT_WW -> SetFillColor(kGreen);
+  	histMuonPT_ttbar    -> SetLineColor(kBlack);
+  	histMuonPT_ttbar    -> SetFillColor(kRed);
 
-  	hs_histMuonPT -> Add(histMuonPT_ttbar);
   	hs_histMuonPT -> Add(histMuonPT_WW);
+  	hs_histMuonPT -> Add(histMuonPT_ttbar);
 
   	hs_histMuonPT -> Draw("Hist");
   	hs_histMuonPT -> SetTitle("Muon P_{T}");
@@ -176,8 +176,8 @@ void SecondReport_Plotting()
   	c -> Modified();
 
 	TH1F *histMuonEta_Data  = (TH1F*) f1 -> Get("histMuonEta");
-  	TH1F *histMuonEta_ttbar = (TH1F*) f2 -> Get("histMuonEta");
-  	TH1F *histMuonEta_WW    = (TH1F*) f3 -> Get("histMuonEta");
+  	TH1F *histMuonEta_WW = (TH1F*) f2 -> Get("histMuonEta");
+  	TH1F *histMuonEta_ttbar    = (TH1F*) f3 -> Get("histMuonEta");
 
   	THStack *hs_histMuonEta = new THStack("hs_histMuonEta", "");
 
@@ -186,21 +186,21 @@ void SecondReport_Plotting()
   	leg_histMuonEta -> SetFillColor(0);
 
   	leg_histMuonEta -> AddEntry(histMuonEta_Data , "Data" , "F");
-  	leg_histMuonEta -> AddEntry(histMuonEta_ttbar, "ttbar", "F");
-  	leg_histMuonEta -> AddEntry(histMuonEta_WW   , "WW"   , "F");
+  	leg_histMuonEta -> AddEntry(histMuonEta_WW, "WW", "F");
+  	leg_histMuonEta -> AddEntry(histMuonEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histMuonEta_Data  -> SetLineColor(kBlue);
-  	histMuonEta_Data  -> Scale((histMuonEta_ttbar -> Integral() + histMuonEta_WW -> Integral())/histMuonEta_Data -> Integral());
-  	histMuonEta_ttbar -> SetLineColor(kBlack);
-  	histMuonEta_ttbar -> SetFillColor(kGreen);
-  	histMuonEta_WW    -> SetLineColor(kBlack);
-  	histMuonEta_WW    -> SetFillColor(kRed);
+  	histMuonEta_Data  -> Scale((histMuonEta_WW -> Integral() + histMuonEta_ttbar -> Integral())/histMuonEta_Data -> Integral());
+  	histMuonEta_WW -> SetLineColor(kBlack);
+  	histMuonEta_WW -> SetFillColor(kGreen);
+  	histMuonEta_ttbar    -> SetLineColor(kBlack);
+  	histMuonEta_ttbar    -> SetFillColor(kRed);
 
-  	hs_histMuonEta -> Add(histMuonEta_ttbar);
   	hs_histMuonEta -> Add(histMuonEta_WW);
+  	hs_histMuonEta -> Add(histMuonEta_ttbar);
 
   	hs_histMuonEta -> Draw("Hist");
   	hs_histMuonEta -> SetTitle("Muon #eta");
@@ -218,8 +218,8 @@ void SecondReport_Plotting()
   	c -> Modified();
 
 	TH1F *histMuonPhi_Data  = (TH1F*) f1 -> Get("histMuonPhi");
-  	TH1F *histMuonPhi_ttbar = (TH1F*) f2 -> Get("histMuonPhi");
-  	TH1F *histMuonPhi_WW    = (TH1F*) f3 -> Get("histMuonPhi");
+  	TH1F *histMuonPhi_WW = (TH1F*) f2 -> Get("histMuonPhi");
+  	TH1F *histMuonPhi_ttbar    = (TH1F*) f3 -> Get("histMuonPhi");
 
   	THStack *hs_histMuonPhi = new THStack("hs_histMuonPhi", "");
 
@@ -228,21 +228,21 @@ void SecondReport_Plotting()
   	leg_histMuonPhi -> SetFillColor(0);
 
   	leg_histMuonPhi -> AddEntry(histMuonPhi_Data , "Data" , "F");
-  	leg_histMuonPhi -> AddEntry(histMuonPhi_ttbar, "ttbar", "F");
-  	leg_histMuonPhi -> AddEntry(histMuonPhi_WW   , "WW"   , "F");
+  	leg_histMuonPhi -> AddEntry(histMuonPhi_WW, "WW", "F");
+  	leg_histMuonPhi -> AddEntry(histMuonPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histMuonPhi_Data  -> SetLineColor(kBlue);
-  	histMuonPhi_Data  -> Scale((histMuonPhi_ttbar -> Integral() + histMuonPhi_WW -> Integral())/histMuonPhi_Data -> Integral());
-  	histMuonPhi_ttbar -> SetLineColor(kBlack);
-  	histMuonPhi_ttbar -> SetFillColor(kGreen);
-  	histMuonPhi_WW    -> SetLineColor(kBlack);
-  	histMuonPhi_WW    -> SetFillColor(kRed);
+  	histMuonPhi_Data  -> Scale((histMuonPhi_WW -> Integral() + histMuonPhi_ttbar -> Integral())/histMuonPhi_Data -> Integral());
+  	histMuonPhi_WW -> SetLineColor(kBlack);
+  	histMuonPhi_WW -> SetFillColor(kGreen);
+  	histMuonPhi_ttbar    -> SetLineColor(kBlack);
+  	histMuonPhi_ttbar    -> SetFillColor(kRed);
 
-  	hs_histMuonPhi -> Add(histMuonPhi_ttbar);
   	hs_histMuonPhi -> Add(histMuonPhi_WW);
+  	hs_histMuonPhi -> Add(histMuonPhi_ttbar);
 
   	hs_histMuonPhi -> Draw("Hist");
   	hs_histMuonPhi -> SetTitle("Muon #phi");
@@ -258,8 +258,8 @@ void SecondReport_Plotting()
 	// Hist MissingET MET 
 
   	TH1F *histMissingETMET_Data  = (TH1F*) f1 -> Get("histMissingETMET");
-  	TH1F *histMissingETMET_ttbar = (TH1F*) f2 -> Get("histMissingETMET");
-  	TH1F *histMissingETMET_WW    = (TH1F*) f3 -> Get("histMissingETMET");
+  	TH1F *histMissingETMET_WW = (TH1F*) f2 -> Get("histMissingETMET");
+  	TH1F *histMissingETMET_ttbar    = (TH1F*) f3 -> Get("histMissingETMET");
 
   	THStack *hs_histMissingETMET = new THStack("hs_histMissingETMET", "");
 
@@ -268,21 +268,21 @@ void SecondReport_Plotting()
   	leg_histMissingETMET -> SetFillColor(0);
 
   	leg_histMissingETMET -> AddEntry(histMissingETMET_Data , "Data" , "F");
-  	leg_histMissingETMET -> AddEntry(histMissingETMET_ttbar, "ttbar", "F");
-  	leg_histMissingETMET -> AddEntry(histMissingETMET_WW   , "WW"   , "F");
+  	leg_histMissingETMET -> AddEntry(histMissingETMET_WW, "WW", "F");
+  	leg_histMissingETMET -> AddEntry(histMissingETMET_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histMissingETMET_Data  -> SetLineColor(kBlue);
-  	histMissingETMET_Data  -> Scale((histMissingETMET_ttbar -> Integral() + histMissingETMET_WW -> Integral())/histMissingETMET_Data -> Integral());
-  	histMissingETMET_ttbar -> SetLineColor(kBlack);
-  	histMissingETMET_ttbar -> SetFillColor(kGreen);
-  	histMissingETMET_WW    -> SetLineColor(kBlack);
-  	histMissingETMET_WW    -> SetFillColor(kRed);
+  	histMissingETMET_Data  -> Scale((histMissingETMET_WW -> Integral() + histMissingETMET_ttbar -> Integral())/histMissingETMET_Data -> Integral());
+  	histMissingETMET_WW -> SetLineColor(kBlack);
+  	histMissingETMET_WW -> SetFillColor(kGreen);
+  	histMissingETMET_ttbar    -> SetLineColor(kBlack);
+  	histMissingETMET_ttbar    -> SetFillColor(kRed);
 
-  	hs_histMissingETMET -> Add(histMissingETMET_ttbar);
   	hs_histMissingETMET -> Add(histMissingETMET_WW);
+  	hs_histMissingETMET -> Add(histMissingETMET_ttbar);
 
   	hs_histMissingETMET -> Draw("Hist");
   	hs_histMissingETMET -> SetTitle("MissingET E^{miss}_{T}");
@@ -300,8 +300,8 @@ void SecondReport_Plotting()
   	c -> Modified();
 
 	TH1F *histMissingETEta_Data  = (TH1F*) f1 -> Get("histMissingETEta");
-  	TH1F *histMissingETEta_ttbar = (TH1F*) f2 -> Get("histMissingETEta");
-  	TH1F *histMissingETEta_WW    = (TH1F*) f3 -> Get("histMissingETEta");
+  	TH1F *histMissingETEta_WW = (TH1F*) f2 -> Get("histMissingETEta");
+  	TH1F *histMissingETEta_ttbar    = (TH1F*) f3 -> Get("histMissingETEta");
 
   	THStack *hs_histMissingETEta = new THStack("hs_histMissingETEta", "");
 
@@ -310,21 +310,21 @@ void SecondReport_Plotting()
   	leg_histMissingETEta -> SetFillColor(0);
 
   	leg_histMissingETEta -> AddEntry(histMissingETEta_Data , "Data" , "F");
-  	leg_histMissingETEta -> AddEntry(histMissingETEta_ttbar, "ttbar", "F");
-  	leg_histMissingETEta -> AddEntry(histMissingETEta_WW   , "WW"   , "F");
+  	leg_histMissingETEta -> AddEntry(histMissingETEta_WW, "WW", "F");
+  	leg_histMissingETEta -> AddEntry(histMissingETEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histMissingETEta_Data  -> SetLineColor(kBlue);
-  	histMissingETEta_Data  -> Scale((histMissingETEta_ttbar -> Integral() + histMissingETEta_WW -> Integral())/histMissingETEta_Data -> Integral());
-  	histMissingETEta_ttbar -> SetLineColor(kBlack);
-  	histMissingETEta_ttbar -> SetFillColor(kGreen);
-  	histMissingETEta_WW    -> SetLineColor(kBlack);
-  	histMissingETEta_WW    -> SetFillColor(kRed);
+  	histMissingETEta_Data  -> Scale((histMissingETEta_WW -> Integral() + histMissingETEta_ttbar -> Integral())/histMissingETEta_Data -> Integral());
+  	histMissingETEta_WW -> SetLineColor(kBlack);
+  	histMissingETEta_WW -> SetFillColor(kGreen);
+  	histMissingETEta_ttbar    -> SetLineColor(kBlack);
+  	histMissingETEta_ttbar    -> SetFillColor(kRed);
 
-  	hs_histMissingETEta -> Add(histMissingETEta_ttbar);
   	hs_histMissingETEta -> Add(histMissingETEta_WW);
+  	hs_histMissingETEta -> Add(histMissingETEta_ttbar);
 
   	hs_histMissingETEta -> Draw("Hist");
   	hs_histMissingETEta -> SetTitle("MissingET #eta");
@@ -342,8 +342,8 @@ void SecondReport_Plotting()
   	c -> Modified();
 
 	TH1F *histMissingETPhi_Data  = (TH1F*) f1 -> Get("histMissingETPhi");
-  	TH1F *histMissingETPhi_ttbar = (TH1F*) f2 -> Get("histMissingETPhi");
-  	TH1F *histMissingETPhi_WW    = (TH1F*) f3 -> Get("histMissingETPhi");
+  	TH1F *histMissingETPhi_WW = (TH1F*) f2 -> Get("histMissingETPhi");
+  	TH1F *histMissingETPhi_ttbar    = (TH1F*) f3 -> Get("histMissingETPhi");
 
   	THStack *hs_histMissingETPhi = new THStack("hs_histMissingETPhi", "");
 
@@ -352,21 +352,21 @@ void SecondReport_Plotting()
   	leg_histMissingETPhi -> SetFillColor(0);
 
   	leg_histMissingETPhi -> AddEntry(histMissingETPhi_Data , "Data" , "F");
-  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_ttbar, "ttbar", "F");
-  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_WW   , "WW"   , "F");
+  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_WW, "WW", "F");
+  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
 	histMissingETPhi_Data  -> SetLineColor(kBlue);
-  	histMissingETPhi_Data  -> Scale((histMissingETPhi_ttbar -> Integral() + histMissingETPhi_WW -> Integral())/histMissingETPhi_Data -> Integral());
-  	histMissingETPhi_ttbar -> SetLineColor(kBlack);
-  	histMissingETPhi_ttbar -> SetFillColor(kGreen);
-  	histMissingETPhi_WW    -> SetLineColor(kBlack);
-  	histMissingETPhi_WW    -> SetFillColor(kRed);
+  	histMissingETPhi_Data  -> Scale((histMissingETPhi_WW -> Integral() + histMissingETPhi_ttbar -> Integral())/histMissingETPhi_Data -> Integral());
+  	histMissingETPhi_WW -> SetLineColor(kBlack);
+  	histMissingETPhi_WW -> SetFillColor(kGreen);
+  	histMissingETPhi_ttbar    -> SetLineColor(kBlack);
+  	histMissingETPhi_ttbar    -> SetFillColor(kRed);
 
-  	hs_histMissingETPhi -> Add(histMissingETPhi_ttbar);
   	hs_histMissingETPhi -> Add(histMissingETPhi_WW);
+  	hs_histMissingETPhi -> Add(histMissingETPhi_ttbar);
 
   	hs_histMissingETPhi -> Draw("Hist");
   	hs_histMissingETPhi -> SetTitle("MissingET #phi");
@@ -378,6 +378,5 @@ void SecondReport_Plotting()
 
 	c -> SaveAs("histMissingETPhi.png");
 
-
-
 }
+
