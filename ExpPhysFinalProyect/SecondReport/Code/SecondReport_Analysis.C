@@ -28,11 +28,11 @@ class Analysis
             Long64_t numberOfEntries = treeReader -> GetEntries();
 
             // Get pointers to branches used in this analysis
-	    TClonesArray *branchMET	 = treeReader -> UseBranch("MissingET");	                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+	    TClonesArray *branchParticle = treeReader -> UseBranch("Particle");	                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
             TClonesArray *branchElectron = treeReader -> UseBranch("Electron");
             TClonesArray *branchMuon     = treeReader -> UseBranch("Muon");
-            TClonesArray *branchJet      = treeReader -> UseBranch("Jet");
-	    TClonesArray *branchParticle = treeReader -> UseBranch("Particle");		
+	    TClonesArray *branchMET	 = treeReader -> UseBranch("MissingET");
+            TClonesArray *branchJet      = treeReader -> UseBranch("Jet");		
 
             // Book histograms                                                                                                                                                                                                                                                                                                                                                                
 
