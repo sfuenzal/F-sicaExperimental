@@ -51,7 +51,7 @@ class Analysis
 	    TH1F *histJetPT              = new TH1F("histJetPT"      , "Jet P_{T}", 50, 0, 300);
             TH1F *histJetEta             = new TH1F("histJetEta"     , "Jet #eta" , 50, -5, 5);
             TH1F *histJetPhi             = new TH1F("histJetPhi"     , "Jet #phi" , 50, -5, 5);
-	    TH1F *histJetMass            = new TH1F("histJetMass"     , "Jet Mass" , 50, 0, 10);
+	    TH1F *histJetMass            = new TH1F("histJetMass"     , "Jet Mass" , 50, 0, 60);
 	    TH1F *histJetDeltaEta        = new TH1F("histJetDeltaEta", "Jet #Delta #eta", 50, 0, 0.5);
             TH1F *histJetDeltaPhi        = new TH1F("histJetDeltaPhi", "Jet #Delta #phi", 50, 0, 0.5);			
 
@@ -98,9 +98,12 @@ class Analysis
 
 		if(branchMuon -> GetEntries() > 0)
                 {
-                        for(UInt_t i = 0; i < branchMuon -> GetEntries();i++)
-			{
-				//Take first electron                                                                                                $
+                        //Take first muon
+			//Muon *muon = (Muon*) branchMuon -> At(0);
+			
+			//Loop over muon objects
+			for(UInt_t i = 0; i < branchMuon -> GetEntries();i++)
+			{                                                                                                
                         	Muon *muon = (Muon*) branchMuon -> At(i);
 
                         	// Plot electron transverse momentum                                                                                 $
@@ -125,7 +128,9 @@ class Analysis
                 if(branchJet -> GetEntries() > 0)
                 {
                 	
-			Jet *jet = (Jet*) branchJet -> At(0);
+			//Take first jet
+			//Jet *jet = (Jet*) branchJet -> At(0);
+			
 			//Loop over jet objects                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
                 	for(UInt_t i = 0; i < branchJet -> GetEntries();i++)
 			{

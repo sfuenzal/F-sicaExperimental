@@ -535,8 +535,8 @@ void SecondReport_Plotting()
   	hs_histJetMass -> Add(histJetMass_ttbar);
 
   	hs_histJetMass -> Draw("Hist");
-  	hs_histJetMass -> SetTitle("Jet #Mass");
-  	hs_histJetMass -> GetXaxis()->SetTitle("#Mass");
+  	hs_histJetMass -> SetTitle("Jet Mass");
+  	hs_histJetMass -> GetXaxis()->SetTitle("M [GeV]");
   	hs_histJetMass -> GetYaxis()->SetTitle("Entries");
   	hs_histJetMass -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetMass -> Draw();
@@ -577,8 +577,8 @@ void SecondReport_Plotting()
   	hs_histJetDeltaEta -> Add(histJetDeltaEta_ttbar);
 
   	hs_histJetDeltaEta -> Draw("Hist");
-  	hs_histJetDeltaEta -> SetTitle("Jet #DeltaEta");
-  	hs_histJetDeltaEta -> GetXaxis()->SetTitle("#DeltaEta");
+  	hs_histJetDeltaEta -> SetTitle("Jet #Delta #eta");
+  	hs_histJetDeltaEta -> GetXaxis()->SetTitle("#Delta #eta");
   	hs_histJetDeltaEta -> GetYaxis()->SetTitle("Entries");
   	hs_histJetDeltaEta -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetDeltaEta -> Draw();
@@ -623,8 +623,8 @@ void SecondReport_Plotting()
   	hs_histJetDeltaPhi -> Add(histJetDeltaPhi_ttbar);
 
   	hs_histJetDeltaPhi -> Draw("Hist");
-  	hs_histJetDeltaPhi -> SetTitle("Jet #DeltaPhi");
-  	hs_histJetDeltaPhi -> GetXaxis()->SetTitle("#DeltaPhi");
+  	hs_histJetDeltaPhi -> SetTitle("Jet #Delta #phi");
+  	hs_histJetDeltaPhi -> GetXaxis()->SetTitle("#Delta #phi");
   	hs_histJetDeltaPhi -> GetYaxis()->SetTitle("Entries");
   	hs_histJetDeltaPhi -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetDeltaPhi -> Draw();
