@@ -33,8 +33,14 @@ class Analysis
             TClonesArray *branchMuon     = treeReader -> UseBranch("Muon");
 	    TClonesArray *branchMET	 = treeReader -> UseBranch("MissingET");
             TClonesArray *branchJet      = treeReader -> UseBranch("Jet");		
+            TClonesArray *branchTrack    = treeReader -> UseBranch("Track");
 
             // Book histograms                                                                                                                                                                                                                                                                                                                                                                
+	    TH1F *histCharginoPT   = new TH1F("histCharginoPT"   , "Chargino P_{T}", 50,  0, 1000);
+            TH1F *histCharginoE    = new TH1F("histCharginoE"    , "Chargino E"    , 50,  0, 2800);
+            TH1F *histCharginoEta  = new TH1F("histCharginoEta"  , "Chargino #eta" , 50, -5, 5);
+            TH1F *histCharginoPhi  = new TH1F("histCharginoPhi"  , "Chargino #phi" , 50, -5, 5);
+            TH1F *histCharginoMass = new TH1F("histCharginoMass" , "Chargino Mass" , 50,  0, 1000);		
 
             TH1F *histElectronPT  = new TH1F("histElectronPT" , "Electron P_{T}", 50,  0, 300);
             TH1F *histElectronEta = new TH1F("histElectronEta", "Electron #eta" , 50, -5, 5);
@@ -54,11 +60,6 @@ class Analysis
 	    TH1F *histJetMass            = new TH1F("histJetMass"     , "Jet Mass" , 50, 0, 60);
 	    TH1F *histJetDeltaEta        = new TH1F("histJetDeltaEta", "Jet #Delta #eta", 50, 0, 0.5);
             TH1F *histJetDeltaPhi        = new TH1F("histJetDeltaPhi", "Jet #Delta #phi", 50, 0, 0.5);			
-
-	    //TH1F *histParticlePT  = new TH1F("histParticlePT" , "Particle P_{T}", 50,  0, 1000);
-            //TH1F *histParticleE   = new TH1F("histParticleE"  , "Particle E"    , 50,  0, 1000);
-            //TH1F *histParticleEta = new TH1F("histParticleEta", "Particle #eta" , 50, -5, 5);
-            //TH1F *histParticlePhi = new TH1F("histParticlePhi", "Particle #phi" , 50, -5, 5);
             
             cout << "Number of Entries in input files: " << numberOfEntries << endl;
 
@@ -70,19 +71,30 @@ class Analysis
 
                 // Load selected branches with data from specified event                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 treeReader -> ReadEntry(entry);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-                //if(branchParticle -> GetEntries() > 0)
-                //{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                	//for(UInt_t i = 0; i < branchParticle -> GetEntries(); i++)
-			//{
-				//Particle* particle = (Particle*) branchParticle -> At(i);
-				// Fill Particle histograms                                                                                          $
-                        	//histParticlePT  -> Fill(particle -> PT);
-                        	//histParticleE   -> Fill(particle -> E);
-                        	//histParticleEta -> Fill(branchParticle -> Eta);
-                        	//histParticlePhi -> Fill(branchParticle -> Phi);
-			//}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                //}
+		
+		TLorentzVector Chargino (0,0,0,0);                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                if(branchParticle -> GetEntries() > 0)
+                {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                	GenParticle* particle = (GenParticle*) branchParticle -> At(0);
+			for(UInt_t i = 0; i < branchParticle -> GetEntries(); i++)
+			{
+				GenParticle* particle = (GenParticle*) branchParticle -> At(i);
+				
+				if (particle -> PID == 1000024)
+				{
+					TLorentzVector temp;
+					temp.SetPtEtaPhiE(particle -> PT, particle -> Eta, particle -> Phi, particle -> E);
+					Chargino += temp;
+					// Fill Particle histograms                                                                       
+                        		histCharginoPT   -> Fill(particle -> PT);
+                        		histCharginoE    -> Fill(particle -> E);
+                        		histCharginoEta  -> Fill(particle -> Eta);
+                        		histCharginoPhi  -> Fill(particle -> Phi);
+					histCharginoMass -> Fill(Chargino.M());
+				}
+			}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                }
 
                 // If event contains at least 1 electron                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 if(branchElectron -> GetEntries() > 0)
@@ -154,6 +166,12 @@ class Analysis
             file_name << "Hists_" << fileName << ".root";
             // Save the histogram in a ROOT file  
             TFile *f = new TFile(file_name.str().c_str(), "RECREATE");
+	    histCharginoPT   -> Write("", TObject::kOverwrite);
+	    histCharginoE    -> Write("", TObject::kOverwrite);
+	    histCharginoEta  -> Write("", TObject::kOverwrite);			
+	    histCharginoPhi  -> Write("", TObject::kOverwrite);	
+            histCharginoMass -> Write("", TObject::kOverwrite);		
+	
             histElectronPT  -> Write("", TObject::kOverwrite);
             histElectronEta -> Write("", TObject::kOverwrite);
             histElectronPhi -> Write("", TObject::kOverwrite);	    
@@ -163,12 +181,12 @@ class Analysis
             histMuonPhi -> Write("", TObject::kOverwrite);
 
 	    histMissingETMET  -> Write("", TObject::kOverwrite);
-            histMissingETEta -> Write("", TObject::kOverwrite);
-            histMissingETPhi -> Write("", TObject::kOverwrite);
+            histMissingETEta  -> Write("", TObject::kOverwrite);
+            histMissingETPhi  -> Write("", TObject::kOverwrite);
 		
-            histJetPT	-> Write("", TObject::kOverwrite);
-            histJetEta	-> Write("", TObject::kOverwrite);
-            histJetPhi	-> Write("", TObject::kOverwrite);
+            histJetPT	    -> Write("", TObject::kOverwrite);
+            histJetEta	    -> Write("", TObject::kOverwrite);
+            histJetPhi	    -> Write("", TObject::kOverwrite);
             histJetMass     -> Write("", TObject::kOverwrite);
             histJetDeltaEta -> Write("", TObject::kOverwrite);
             histJetDeltaPhi -> Write("", TObject::kOverwrite);		

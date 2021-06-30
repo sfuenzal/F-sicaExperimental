@@ -6,6 +6,134 @@ void SecondReport_Plotting()
 
 	TCanvas *c = new TCanvas("c1", "c1", 1024, 800);
 
+	// Charginos
+	// Hist Chargino PT  
+
+  	TH1F *histCharginoPT_Data  = (TH1F*) f1 -> Get("histCharginoPT");
+
+  	TLegend *leg_histCharginoPT = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histCharginoPT -> SetBorderSize(0);
+  	leg_histCharginoPT -> SetFillColor(0);
+
+  	leg_histCharginoPT -> AddEntry(histCharginoPT_Data , "Data" , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histCharginoPT_Data  -> SetLineColor(kBlue);
+
+  	histCharginoPT_Data -> SetTitle("Chargino P_{T}");
+  	histCharginoPT_Data -> GetXaxis() -> SetTitle("p_{T} [GeV]");
+  	histCharginoPT_Data -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoPT_Data -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoPT_Data -> Draw("e1");
+
+  	c -> SaveAs("histCharginoPT.png");
+
+	// Hist Chargino E
+
+	c -> Clear();
+  	c -> Modified();  
+
+  	TH1F *histCharginoE_Data  = (TH1F*) f1 -> Get("histCharginoE");
+
+  	TLegend *leg_histCharginoE = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histCharginoE -> SetBorderSize(0);
+  	leg_histCharginoE -> SetFillColor(0);
+
+  	leg_histCharginoE -> AddEntry(histCharginoE_Data , "Data" , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histCharginoE_Data  -> SetLineColor(kBlue);
+
+  	histCharginoE_Data -> SetTitle("Chargino E");
+  	histCharginoE_Data -> GetXaxis() -> SetTitle("E [GeV]");
+  	histCharginoE_Data -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoE_Data -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoE_Data -> Draw();
+
+  	c -> SaveAs("histCharginoE.png");
+
+	// Hist Chargino Eta  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histCharginoEta_Data  = (TH1F*) f1 -> Get("histCharginoEta");
+
+  	TLegend *leg_histCharginoEta = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histCharginoEta -> SetBorderSize(0);
+  	leg_histCharginoEta -> SetFillColor(0);
+
+  	leg_histCharginoEta -> AddEntry(histCharginoEta_Data , "Data" , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histCharginoEta_Data  -> SetLineColor(kBlue);
+
+  	histCharginoEta_Data -> SetTitle("Chargino #eta");
+  	histCharginoEta_Data -> GetXaxis() -> SetTitle("#eta");
+  	histCharginoEta_Data -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoEta_Data -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoEta_Data -> Draw("e1");
+
+  	c -> SaveAs("histCharginoEta.png");
+
+	// Hist Chargino Phi  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histCharginoPhi_Data  = (TH1F*) f1 -> Get("histCharginoPhi");
+
+  	TLegend *leg_histCharginoPhi = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histCharginoPhi -> SetBorderSize(0);
+  	leg_histCharginoPhi -> SetFillColor(0);
+
+  	leg_histCharginoPhi -> AddEntry(histCharginoPhi_Data , "Data" , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histCharginoPhi_Data  -> SetLineColor(kBlue);
+
+  	histCharginoPhi_Data -> SetTitle("Chargino #phi");
+  	histCharginoPhi_Data -> GetXaxis() -> SetTitle("#phi");
+  	histCharginoPhi_Data -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoPhi_Data -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoPhi_Data -> Draw("e1");
+
+  	c -> SaveAs("histCharginoPhi.png");
+
+	// Hist Chargino Mass  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histCharginoMass_Data  = (TH1F*) f1 -> Get("histCharginoMass");
+
+  	TLegend *leg_histCharginoMass = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histCharginoMass -> SetBorderSize(0);
+  	leg_histCharginoMass -> SetFillColor(0);
+
+  	leg_histCharginoMass -> AddEntry(histCharginoMass_Data , "Data" , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histCharginoMass_Data  -> SetLineColor(kBlue);
+
+  	histCharginoMass_Data -> SetTitle("Chargino #Mass");
+  	histCharginoMass_Data -> GetXaxis() -> SetTitle("#Mass");
+  	histCharginoMass_Data -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoMass_Data -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoMass_Data -> Draw("e1");
+
+  	c -> SaveAs("histCharginoMass.png");
+
 	// Electrons
 	// Hist Electron PT  
 
