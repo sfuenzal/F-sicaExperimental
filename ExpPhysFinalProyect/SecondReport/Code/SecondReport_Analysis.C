@@ -13,7 +13,7 @@ class Analysis
 
             string inputpath = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/";
 
-            std::stringstream file_name;
+            stringstream file_name;
             // Create chain of root trees                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
             TChain chain("Delphes");
             for(UInt_t ifile = 0;ifile < nfiles;ifile++)
@@ -31,8 +31,8 @@ class Analysis
 	    TClonesArray *branchMET	 = treeReader -> UseBranch("MissingET");	                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
             TClonesArray *branchElectron = treeReader -> UseBranch("Electron");
             TClonesArray *branchMuon     = treeReader -> UseBranch("Muon");
-	    TClonesArray *branchParticle = treeReader -> UseBranch("Particle");	
             TClonesArray *branchJet      = treeReader -> UseBranch("Jet");
+	    TClonesArray *branchParticle = treeReader -> UseBranch("Particle");		
 
             // Book histograms                                                                                                                                                                                                                                                                                                                                                                
 
@@ -47,11 +47,18 @@ class Analysis
             TH1F *histMissingETMET        = new TH1F("histMissingETMET", "E^{miss}_{T}", 50, 0, 300);
             TH1F *histMissingETEta        = new TH1F("histMissingETEta", "#eta", 50, -5, 5);
             TH1F *histMissingETPhi        = new TH1F("histMissingETPhi", "#phi", 50, -5, 5);	
+		
+	    TH1F *histJetPT              = new TH1F("histJetPT"      , "Jet P_{T}", 50, 0, 300);
+            TH1F *histJetEta             = new TH1F("histJetEta"     , "Jet #eta" , 50, -5, 5);
+            TH1F *histJetPhi             = new TH1F("histJetPhi"     , "Jet #phi" , 50, -5, 5);
+	    TH1F *histJetMass            = new TH1F("histJetMass"     , "Jet Mass" , 50, 0, 10);
+	    TH1F *histJetDeltaEta        = new TH1F("histJetDeltaEta", "Jet #Delta #eta", 50, 0, 0.5);
+            TH1F *histJetDeltaPhi        = new TH1F("histJetDeltaPhi", "Jet #Delta #phi", 50, 0, 0.5);			
 
-	    TH1F *histParticlePT  = new TH1F("histParticlePT" , "Particle P_{T}", 50,  0, 1000);
-            TH1F *histParticleE   = new TH1F("histParticleE"  , "Particle E"    , 50,  0, 1000);
-            TH1F *histParticleEta = new TH1F("histParticleEta", "Particle #eta" , 50, -5, 5);
-            TH1F *histParticlePhi = new TH1F("histParticlePhi", "Particle #phi" , 50, -5, 5);
+	    //TH1F *histParticlePT  = new TH1F("histParticlePT" , "Particle P_{T}", 50,  0, 1000);
+            //TH1F *histParticleE   = new TH1F("histParticleE"  , "Particle E"    , 50,  0, 1000);
+            //TH1F *histParticleEta = new TH1F("histParticleEta", "Particle #eta" , 50, -5, 5);
+            //TH1F *histParticlePhi = new TH1F("histParticlePhi", "Particle #phi" , 50, -5, 5);
             
             cout << "Number of Entries in input files: " << numberOfEntries << endl;
 
@@ -115,23 +122,26 @@ class Analysis
 			histMissingETPhi -> Fill(met -> Phi);                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                 }
 
-                //if(branchJet -> GetEntries() > 0)
-                //{
+                if(branchJet -> GetEntries() > 0)
+                {
                 	
-			//Jet *jet = (Jet*) branchJet -> At(0);
+			Jet *jet = (Jet*) branchJet -> At(0);
 			//Loop over jet objects                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-                	//for(UInt_t i = 0; i < branchJet -> GetEntries();i++)
-
-
-          	//{
-                        	//Jet *jet = (Jet*) branchJet -> At(i);
+                	for(UInt_t i = 0; i < branchJet -> GetEntries();i++)
+			{
+                        	Jet *jet = (Jet*) branchJet -> At(i);
                         	// Select those jets tagged as taus
-				//if(jet -> TauTag == 1)
-                        	//{
-                        		// histTau -> Fill(je
-                        	//}
-                 	//}
-                //}
+				if(jet -> TauTag == 1)
+                        	{
+                  			histJetPT       -> Fill(jet -> PT);
+            				histJetEta      -> Fill(jet -> Eta);       
+            				histJetPhi      -> Fill(jet -> Phi);       
+            				histJetMass     -> Fill(jet -> Mass);
+					histJetDeltaEta -> Fill(jet -> DeltaEta);       
+            				histJetDeltaPhi -> Fill(jet -> DeltaPhi);       
+                        	}
+                 	}
+                }
 
     
             }
@@ -150,6 +160,13 @@ class Analysis
 	    histMissingETMET  -> Write("", TObject::kOverwrite);
             histMissingETEta -> Write("", TObject::kOverwrite);
             histMissingETPhi -> Write("", TObject::kOverwrite);
+		
+            histJetPT	-> Write("", TObject::kOverwrite);
+            histJetEta	-> Write("", TObject::kOverwrite);
+            histJetPhi	-> Write("", TObject::kOverwrite);
+            histJetMass     -> Write("", TObject::kOverwrite);
+            histJetDeltaEta -> Write("", TObject::kOverwrite);
+            histJetDeltaPhi -> Write("", TObject::kOverwrite);		
 	
         }
 

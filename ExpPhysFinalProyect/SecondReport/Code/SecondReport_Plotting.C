@@ -378,5 +378,260 @@ void SecondReport_Plotting()
 
 	c -> SaveAs("histMissingETPhi.png");
 
+    // Jet
+	// Hist Jet PT 
+
+  	TH1F *histJetPT_Data  = (TH1F*) f1 -> Get("histJetPT");
+  	TH1F *histJetPT_WW = (TH1F*) f2 -> Get("histJetPT");
+  	TH1F *histJetPT_ttbar    = (TH1F*) f3 -> Get("histJetPT");
+
+  	THStack *hs_histJetPT = new THStack("hs_histJetPT", "");
+
+  	TLegend *leg_histJetPT = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histJetPT -> SetBorderSize(0);
+  	leg_histJetPT -> SetFillColor(0);
+
+  	leg_histJetPT -> AddEntry(histJetPT_Data , "Data" , "F");
+  	leg_histJetPT -> AddEntry(histJetPT_WW, "WW", "F");
+  	leg_histJetPT -> AddEntry(histJetPT_ttbar   , "ttbar"   , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histJetPT_Data  -> SetLineColor(kBlue);
+  	histJetPT_Data  -> Scale((histJetPT_WW -> Integral() + histJetPT_ttbar -> Integral())/histJetPT_Data -> Integral());
+  	histJetPT_WW -> SetLineColor(kBlack);
+  	histJetPT_WW -> SetFillColor(kGreen);
+  	histJetPT_ttbar    -> SetLineColor(kBlack);
+  	histJetPT_ttbar    -> SetFillColor(kRed);
+
+  	hs_histJetPT -> Add(histJetPT_WW);
+  	hs_histJetPT -> Add(histJetPT_ttbar);
+
+  	hs_histJetPT -> Draw("Hist");
+  	hs_histJetPT -> SetTitle("Jet P_{T}");
+  	hs_histJetPT -> GetXaxis() -> SetTitle("P_{T} [GeV]");
+  	hs_histJetPT -> GetYaxis() -> SetTitle("Entries");
+  	hs_histJetPT -> GetYaxis() -> SetTitleOffset(1.4);
+  	leg_histJetPT -> Draw();
+  	histJetPT_Data -> Draw("same:e1");
+
+  	c -> SaveAs("histJetPT.png");
+
+	// Hist Jet Eta  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histJetEta_Data  = (TH1F*) f1 -> Get("histJetEta");
+  	TH1F *histJetEta_WW = (TH1F*) f2 -> Get("histJetEta");
+  	TH1F *histJetEta_ttbar    = (TH1F*) f3 -> Get("histJetEta");
+
+  	THStack *hs_histJetEta = new THStack("hs_histJetEta", "");
+
+  	TLegend *leg_histJetEta = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histJetEta -> SetBorderSize(0);
+  	leg_histJetEta -> SetFillColor(0);
+
+  	leg_histJetEta -> AddEntry(histJetEta_Data , "Data" , "F");
+  	leg_histJetEta -> AddEntry(histJetEta_WW, "WW", "F");
+  	leg_histJetEta -> AddEntry(histJetEta_ttbar   , "ttbar"   , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histJetEta_Data  -> SetLineColor(kBlue);
+  	histJetEta_Data  -> Scale((histJetEta_WW -> Integral() + histJetEta_ttbar -> Integral())/histJetEta_Data -> Integral());
+  	histJetEta_WW -> SetLineColor(kBlack);
+  	histJetEta_WW -> SetFillColor(kGreen);
+  	histJetEta_ttbar    -> SetLineColor(kBlack);
+  	histJetEta_ttbar    -> SetFillColor(kRed);
+
+  	hs_histJetEta -> Add(histJetEta_WW);
+  	hs_histJetEta -> Add(histJetEta_ttbar);
+
+  	hs_histJetEta -> Draw("Hist");
+  	hs_histJetEta -> SetTitle("Jet #eta");
+  	hs_histJetEta -> GetXaxis()->SetTitle("#eta");
+  	hs_histJetEta -> GetYaxis()->SetTitle("Entries");
+  	hs_histJetEta -> GetYaxis()->SetTitleOffset(1.4);
+  	leg_histJetEta -> Draw();
+  	histJetEta_Data -> Draw("same:e1");
+
+	c -> SaveAs("histJetEta.png");
+
+	// Hist Jet Phi  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histJetPhi_Data  = (TH1F*) f1 -> Get("histJetPhi");
+  	TH1F *histJetPhi_WW = (TH1F*) f2 -> Get("histJetPhi");
+  	TH1F *histJetPhi_ttbar    = (TH1F*) f3 -> Get("histJetPhi");
+
+  	THStack *hs_histJetPhi = new THStack("hs_histJetPhi", "");
+
+  	TLegend *leg_histJetPhi = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histJetPhi -> SetBorderSize(0);
+  	leg_histJetPhi -> SetFillColor(0);
+
+  	leg_histJetPhi -> AddEntry(histJetPhi_Data , "Data" , "F");
+  	leg_histJetPhi -> AddEntry(histJetPhi_WW, "WW", "F");
+  	leg_histJetPhi -> AddEntry(histJetPhi_ttbar   , "ttbar"   , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histJetPhi_Data  -> SetLineColor(kBlue);
+  	histJetPhi_Data  -> Scale((histJetPhi_WW -> Integral() + histJetPhi_ttbar -> Integral())/histJetPhi_Data -> Integral());
+  	histJetPhi_WW -> SetLineColor(kBlack);
+  	histJetPhi_WW -> SetFillColor(kGreen);
+  	histJetPhi_ttbar    -> SetLineColor(kBlack);
+  	histJetPhi_ttbar    -> SetFillColor(kRed);
+
+  	hs_histJetPhi -> Add(histJetPhi_WW);
+  	hs_histJetPhi -> Add(histJetPhi_ttbar);
+
+  	hs_histJetPhi -> Draw("Hist");
+  	hs_histJetPhi -> SetTitle("Jet #phi");
+  	hs_histJetPhi -> GetXaxis()->SetTitle("#phi");
+  	hs_histJetPhi -> GetYaxis()->SetTitle("Entries");
+  	hs_histJetPhi -> GetYaxis()->SetTitleOffset(1.4);
+  	leg_histJetPhi -> Draw();
+  	histJetPhi_Data -> Draw("same:e1");
+
+	c -> SaveAs("histJetPhi.png");
+
+	// Hist Jet Mass  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histJetMass_Data  = (TH1F*) f1 -> Get("histJetMass");
+  	TH1F *histJetMass_WW = (TH1F*) f2 -> Get("histJetMass");
+  	TH1F *histJetMass_ttbar    = (TH1F*) f3 -> Get("histJetMass");
+
+  	THStack *hs_histJetMass = new THStack("hs_histJetMass", "");
+
+  	TLegend *leg_histJetMass = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histJetMass -> SetBorderSize(0);
+  	leg_histJetMass -> SetFillColor(0);
+
+  	leg_histJetMass -> AddEntry(histJetMass_Data , "Data" , "F");
+  	leg_histJetMass -> AddEntry(histJetMass_WW, "WW", "F");
+  	leg_histJetMass -> AddEntry(histJetMass_ttbar   , "ttbar"   , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histJetMass_Data  -> SetLineColor(kBlue);
+  	histJetMass_Data  -> Scale((histJetMass_WW -> Integral() + histJetMass_ttbar -> Integral())/histJetMass_Data -> Integral());
+  	histJetMass_WW -> SetLineColor(kBlack);
+  	histJetMass_WW -> SetFillColor(kGreen);
+  	histJetMass_ttbar    -> SetLineColor(kBlack);
+  	histJetMass_ttbar    -> SetFillColor(kRed);
+
+  	hs_histJetMass -> Add(histJetMass_WW);
+  	hs_histJetMass -> Add(histJetMass_ttbar);
+
+  	hs_histJetMass -> Draw("Hist");
+  	hs_histJetMass -> SetTitle("Jet #Mass");
+  	hs_histJetMass -> GetXaxis()->SetTitle("#Mass");
+  	hs_histJetMass -> GetYaxis()->SetTitle("Entries");
+  	hs_histJetMass -> GetYaxis()->SetTitleOffset(1.4);
+  	leg_histJetMass -> Draw();
+  	histJetMass_Data -> Draw("same:e1");
+
+	c -> SaveAs("histJetMass.png");
+
+	// Hist Jet DeltaEta  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histJetDeltaEta_Data  = (TH1F*) f1 -> Get("histJetDeltaEta");
+  	TH1F *histJetDeltaEta_WW = (TH1F*) f2 -> Get("histJetDeltaEta");
+  	TH1F *histJetDeltaEta_ttbar    = (TH1F*) f3 -> Get("histJetDeltaEta");
+
+  	THStack *hs_histJetDeltaEta = new THStack("hs_histJetDeltaEta", "");
+
+  	TLegend *leg_histJetDeltaEta = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histJetDeltaEta -> SetBorderSize(0);
+  	leg_histJetDeltaEta -> SetFillColor(0);
+
+  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_Data , "Data" , "F");
+  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_WW, "WW", "F");
+  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_ttbar   , "ttbar"   , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histJetDeltaEta_Data  -> SetLineColor(kBlue);
+  	histJetDeltaEta_Data  -> Scale((histJetDeltaEta_WW -> Integral() + histJetDeltaEta_ttbar -> Integral())/histJetDeltaEta_Data -> Integral());
+  	histJetDeltaEta_WW -> SetLineColor(kBlack);
+  	histJetDeltaEta_WW -> SetFillColor(kGreen);
+  	histJetDeltaEta_ttbar    -> SetLineColor(kBlack);
+  	histJetDeltaEta_ttbar    -> SetFillColor(kRed);
+
+  	hs_histJetDeltaEta -> Add(histJetDeltaEta_WW);
+  	hs_histJetDeltaEta -> Add(histJetDeltaEta_ttbar);
+
+  	hs_histJetDeltaEta -> Draw("Hist");
+  	hs_histJetDeltaEta -> SetTitle("Jet #DeltaEta");
+  	hs_histJetDeltaEta -> GetXaxis()->SetTitle("#DeltaEta");
+  	hs_histJetDeltaEta -> GetYaxis()->SetTitle("Entries");
+  	hs_histJetDeltaEta -> GetYaxis()->SetTitleOffset(1.4);
+  	leg_histJetDeltaEta -> Draw();
+  	histJetDeltaEta_Data -> Draw("same:e1");
+
+	c -> SaveAs("histJetDeltaEta.png");
+
+
+
+
+
+	// Hist Jet DeltaPhi  
+
+	c -> Clear();
+  	c -> Modified();
+
+	TH1F *histJetDeltaPhi_Data  = (TH1F*) f1 -> Get("histJetDeltaPhi");
+  	TH1F *histJetDeltaPhi_WW = (TH1F*) f2 -> Get("histJetDeltaPhi");
+  	TH1F *histJetDeltaPhi_ttbar    = (TH1F*) f3 -> Get("histJetDeltaPhi");
+
+  	THStack *hs_histJetDeltaPhi = new THStack("hs_histJetDeltaPhi", "");
+
+  	TLegend *leg_histJetDeltaPhi = new TLegend(0.7, 0.70, 0.9, 0.89);
+  	leg_histJetDeltaPhi -> SetBorderSize(0);
+  	leg_histJetDeltaPhi -> SetFillColor(0);
+
+  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_Data , "Data" , "F");
+  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_WW, "WW", "F");
+  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_ttbar   , "ttbar"   , "F");
+
+  	c -> Draw();
+  	c -> SetLogy();
+  	
+	histJetDeltaPhi_Data  -> SetLineColor(kBlue);
+  	histJetDeltaPhi_Data  -> Scale((histJetDeltaPhi_WW -> Integral() + histJetDeltaPhi_ttbar -> Integral())/histJetDeltaPhi_Data -> Integral());
+  	histJetDeltaPhi_WW -> SetLineColor(kBlack);
+  	histJetDeltaPhi_WW -> SetFillColor(kGreen);
+  	histJetDeltaPhi_ttbar    -> SetLineColor(kBlack);
+  	histJetDeltaPhi_ttbar    -> SetFillColor(kRed);
+
+  	hs_histJetDeltaPhi -> Add(histJetDeltaPhi_WW);
+  	hs_histJetDeltaPhi -> Add(histJetDeltaPhi_ttbar);
+
+  	hs_histJetDeltaPhi -> Draw("Hist");
+  	hs_histJetDeltaPhi -> SetTitle("Jet #DeltaPhi");
+  	hs_histJetDeltaPhi -> GetXaxis()->SetTitle("#DeltaPhi");
+  	hs_histJetDeltaPhi -> GetYaxis()->SetTitle("Entries");
+  	hs_histJetDeltaPhi -> GetYaxis()->SetTitleOffset(1.4);
+  	leg_histJetDeltaPhi -> Draw();
+  	histJetDeltaPhi_Data -> Draw("same:e1");
+
+	c -> SaveAs("histJetDeltaPhi.png");
+
 }
+
 
