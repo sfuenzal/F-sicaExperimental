@@ -52,7 +52,7 @@ void SecondReport_Plotting()
   	histCharginoE_Data -> GetXaxis() -> SetTitle("E [GeV]");
   	histCharginoE_Data -> GetYaxis() -> SetTitle("Entries");
   	histCharginoE_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoE_Data -> Draw();
+  	histCharginoE_Data -> Draw("e1");
 
   	c -> SaveAs("histCharginoE.png");
 
