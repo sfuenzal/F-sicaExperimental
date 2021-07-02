@@ -26,7 +26,9 @@ void SecondReport_Plotting()
   	histCharginoPT_Data -> GetXaxis() -> SetTitle("p_{T} [GeV]");
   	histCharginoPT_Data -> GetYaxis() -> SetTitle("Entries");
   	histCharginoPT_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoPT_Data -> Draw();
+  	histCharginoPT_Data -> SetStats(0);
+	histCharginoPT_Data -> Draw();
+	leg_histCharginoPT -> Draw("same");
 
   	c -> SaveAs("histCharginoPT.png");
 
@@ -52,7 +54,9 @@ void SecondReport_Plotting()
   	histCharginoE_Data -> GetXaxis() -> SetTitle("E [GeV]");
   	histCharginoE_Data -> GetYaxis() -> SetTitle("Entries");
   	histCharginoE_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoE_Data -> Draw();
+  	histCharginoE_Data -> SetStats(0);
+	histCharginoE_Data -> Draw();
+	leg_histCharginoE -> Draw("same");
 
   	c -> SaveAs("histCharginoE.png");
 
@@ -78,8 +82,10 @@ void SecondReport_Plotting()
   	histCharginoEta_Data -> GetXaxis() -> SetTitle("#eta");
   	histCharginoEta_Data -> GetYaxis() -> SetTitle("Entries");
   	histCharginoEta_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoEta_Data -> Draw();
-
+  	histCharginoEta_Data -> SetStats(0);
+ 	histCharginoEta_Data -> Draw();
+	leg_histCharginoEta -> Draw("same");
+	
   	c -> SaveAs("histCharginoEta.png");
 
 	// Hist Chargino Phi  
@@ -104,7 +110,9 @@ void SecondReport_Plotting()
   	histCharginoPhi_Data -> GetXaxis() -> SetTitle("#phi");
   	histCharginoPhi_Data -> GetYaxis() -> SetTitle("Entries");
   	histCharginoPhi_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoPhi_Data -> Draw();
+  	histCharginoPhi_Data -> SetStats(0);
+	histCharginoPhi_Data -> Draw();
+	leg_histCharginoPhi -> Draw("same");
 
   	c -> SaveAs("histCharginoPhi.png");
 
@@ -130,7 +138,9 @@ void SecondReport_Plotting()
   	histCharginoMass_Data -> GetXaxis() -> SetTitle("Mass [GeV]");
   	histCharginoMass_Data -> GetYaxis() -> SetTitle("Entries");
   	histCharginoMass_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoMass_Data -> Draw();
+  	histCharginoMass_Data -> SetStats(0);
+	histCharginoMass_Data -> Draw();
+	leg_histCharginoMass -> Draw("same");
 
   	c -> SaveAs("histCharginoMass.png");
 

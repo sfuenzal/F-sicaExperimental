@@ -11,7 +11,7 @@ class Analysis
             gSystem -> AddDynamicPath("/user/e/edson/public/exp_phys/MG5_aMC_v3_1_0/Delphes/");
             gSystem -> Load("libDelphes");
 
-            string inputpath = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/";
+            string inputpath = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/";
 
             stringstream file_name;
             // Create chain of root trees                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
@@ -198,7 +198,7 @@ class Analysis
 void SecondReport_Analysis()
 {
     unsigned int Runs = 3;
-    vector<string> Datasets = {"output_simulated_data_two", "ttbar", "WW"};
+    vector<string> Datasets = {"data", "ttbar", "WW"};
 
     Analysis *obj1 = new Analysis();
 

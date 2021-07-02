@@ -26,7 +26,7 @@ class Open
     public:
         void OpenROOTFile()
         {
-            TString path = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/chargino_pair_production_electron_case/output_simulated_data_two/Events/";
+            TString path = "/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/data/Events/";
 
             TChain *fChain = new TChain("LHEF");
 	   

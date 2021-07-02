@@ -1,0 +1,22 @@
+set group_subprocesses Auto
+set ignore_six_quark_processes False
+set gauge unitary
+set complex_mass_scheme False
+import model MSSM_SLHA2
+define p = g u c d s u~ c~ d~ s~
+define j = g u c d s u~ c~ d~ s~
+define l+ = e+ mu+
+define l- = e- mu-
+define vl = ve vm 
+define vl~ = ve~ vm~ 
+generate p p > x1- x1+ > vl l- n1 vl~ l+ n1  
+output /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/data
+launch -i
+multi_run 3
+pythia=ON
+pgs=OFF
+delphes=ON
+set ebeam1 7000
+set ebeam2 7000
+set nevents 1000
+print_results --path=/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/data/cs.txt --format=short
