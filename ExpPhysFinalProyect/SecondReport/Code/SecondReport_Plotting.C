@@ -157,7 +157,7 @@ void SecondReport_Plotting()
   	leg_histElectronPT -> SetBorderSize(0);
   	leg_histElectronPT -> SetFillColor(0);
 
-  	leg_histElectronPT -> AddEntry(histElectronPT_Data , "Data" , "F");
+  	leg_histElectronPT -> AddEntry(histElectronPT_Data , "Data" , "LEP");
   	leg_histElectronPT -> AddEntry(histElectronPT_WW, "WW", "F");
   	leg_histElectronPT -> AddEntry(histElectronPT_ttbar   , "ttbar"   , "F");
 
@@ -199,7 +199,7 @@ void SecondReport_Plotting()
   	leg_histElectronEta -> SetBorderSize(0);
   	leg_histElectronEta -> SetFillColor(0);
 
-  	leg_histElectronEta -> AddEntry(histElectronEta_Data , "Data" , "F");
+  	leg_histElectronEta -> AddEntry(histElectronEta_Data , "Data" , "LEP");
   	leg_histElectronEta -> AddEntry(histElectronEta_WW, "WW", "F");
   	leg_histElectronEta -> AddEntry(histElectronEta_ttbar   , "ttbar"   , "F");
 
@@ -241,7 +241,7 @@ void SecondReport_Plotting()
   	leg_histElectronPhi -> SetBorderSize(0);
   	leg_histElectronPhi -> SetFillColor(0);
 
-  	leg_histElectronPhi -> AddEntry(histElectronPhi_Data , "Data" , "F");
+  	leg_histElectronPhi -> AddEntry(histElectronPhi_Data , "Data" , "LEP");
   	leg_histElectronPhi -> AddEntry(histElectronPhi_WW, "WW", "F");
   	leg_histElectronPhi -> AddEntry(histElectronPhi_ttbar   , "ttbar"   , "F");
 
@@ -281,7 +281,7 @@ void SecondReport_Plotting()
   	leg_histMuonPT -> SetBorderSize(0);
   	leg_histMuonPT -> SetFillColor(0);
 
-  	leg_histMuonPT -> AddEntry(histMuonPT_Data , "Data" , "F");
+  	leg_histMuonPT -> AddEntry(histMuonPT_Data , "Data" , "LEP");
   	leg_histMuonPT -> AddEntry(histMuonPT_WW, "WW", "F");
   	leg_histMuonPT -> AddEntry(histMuonPT_ttbar   , "ttbar"   , "F");
 
@@ -323,7 +323,7 @@ void SecondReport_Plotting()
   	leg_histMuonEta -> SetBorderSize(0);
   	leg_histMuonEta -> SetFillColor(0);
 
-  	leg_histMuonEta -> AddEntry(histMuonEta_Data , "Data" , "F");
+  	leg_histMuonEta -> AddEntry(histMuonEta_Data , "Data" , "LEP");
   	leg_histMuonEta -> AddEntry(histMuonEta_WW, "WW", "F");
   	leg_histMuonEta -> AddEntry(histMuonEta_ttbar   , "ttbar"   , "F");
 
@@ -365,7 +365,7 @@ void SecondReport_Plotting()
   	leg_histMuonPhi -> SetBorderSize(0);
   	leg_histMuonPhi -> SetFillColor(0);
 
-  	leg_histMuonPhi -> AddEntry(histMuonPhi_Data , "Data" , "F");
+  	leg_histMuonPhi -> AddEntry(histMuonPhi_Data , "Data" , "LEP");
   	leg_histMuonPhi -> AddEntry(histMuonPhi_WW, "WW", "F");
   	leg_histMuonPhi -> AddEntry(histMuonPhi_ttbar   , "ttbar"   , "F");
 
@@ -405,7 +405,7 @@ void SecondReport_Plotting()
   	leg_histMissingETMET -> SetBorderSize(0);
   	leg_histMissingETMET -> SetFillColor(0);
 
-  	leg_histMissingETMET -> AddEntry(histMissingETMET_Data , "Data" , "F");
+  	leg_histMissingETMET -> AddEntry(histMissingETMET_Data , "Data" , "LEP");
   	leg_histMissingETMET -> AddEntry(histMissingETMET_WW, "WW", "F");
   	leg_histMissingETMET -> AddEntry(histMissingETMET_ttbar   , "ttbar"   , "F");
 
@@ -447,7 +447,7 @@ void SecondReport_Plotting()
   	leg_histMissingETEta -> SetBorderSize(0);
   	leg_histMissingETEta -> SetFillColor(0);
 
-  	leg_histMissingETEta -> AddEntry(histMissingETEta_Data , "Data" , "F");
+  	leg_histMissingETEta -> AddEntry(histMissingETEta_Data , "Data" , "LEP");
   	leg_histMissingETEta -> AddEntry(histMissingETEta_WW, "WW", "F");
   	leg_histMissingETEta -> AddEntry(histMissingETEta_ttbar   , "ttbar"   , "F");
 
@@ -489,7 +489,7 @@ void SecondReport_Plotting()
   	leg_histMissingETPhi -> SetBorderSize(0);
   	leg_histMissingETPhi -> SetFillColor(0);
 
-  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_Data , "Data" , "F");
+  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_Data , "Data" , "LEP");
   	leg_histMissingETPhi -> AddEntry(histMissingETPhi_WW, "WW", "F");
   	leg_histMissingETPhi -> AddEntry(histMissingETPhi_ttbar   , "ttbar"   , "F");
 
@@ -529,7 +529,7 @@ void SecondReport_Plotting()
   	leg_histJetPT -> SetBorderSize(0);
   	leg_histJetPT -> SetFillColor(0);
 
-  	leg_histJetPT -> AddEntry(histJetPT_Data , "Data" , "F");
+  	leg_histJetPT -> AddEntry(histJetPT_Data , "Data" , "LEP");
   	leg_histJetPT -> AddEntry(histJetPT_WW, "WW", "F");
   	leg_histJetPT -> AddEntry(histJetPT_ttbar   , "ttbar"   , "F");
 
@@ -571,7 +571,7 @@ void SecondReport_Plotting()
   	leg_histJetEta -> SetBorderSize(0);
   	leg_histJetEta -> SetFillColor(0);
 
-  	leg_histJetEta -> AddEntry(histJetEta_Data , "Data" , "F");
+  	leg_histJetEta -> AddEntry(histJetEta_Data , "Data" , "LEP");
   	leg_histJetEta -> AddEntry(histJetEta_WW, "WW", "F");
   	leg_histJetEta -> AddEntry(histJetEta_ttbar   , "ttbar"   , "F");
 
@@ -613,7 +613,7 @@ void SecondReport_Plotting()
   	leg_histJetPhi -> SetBorderSize(0);
   	leg_histJetPhi -> SetFillColor(0);
 
-  	leg_histJetPhi -> AddEntry(histJetPhi_Data , "Data" , "F");
+  	leg_histJetPhi -> AddEntry(histJetPhi_Data , "Data" , "LEP");
   	leg_histJetPhi -> AddEntry(histJetPhi_WW, "WW", "F");
   	leg_histJetPhi -> AddEntry(histJetPhi_ttbar   , "ttbar"   , "F");
 
@@ -655,7 +655,7 @@ void SecondReport_Plotting()
   	leg_histJetMass -> SetBorderSize(0);
   	leg_histJetMass -> SetFillColor(0);
 
-  	leg_histJetMass -> AddEntry(histJetMass_Data , "Data" , "F");
+  	leg_histJetMass -> AddEntry(histJetMass_Data , "Data" , "LEP");
   	leg_histJetMass -> AddEntry(histJetMass_WW, "WW", "F");
   	leg_histJetMass -> AddEntry(histJetMass_ttbar   , "ttbar"   , "F");
 
@@ -697,7 +697,7 @@ void SecondReport_Plotting()
   	leg_histJetDeltaEta -> SetBorderSize(0);
   	leg_histJetDeltaEta -> SetFillColor(0);
 
-  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_Data , "Data" , "F");
+  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_Data , "Data" , "LEP");
   	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_WW, "WW", "F");
   	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_ttbar   , "ttbar"   , "F");
 
@@ -743,7 +743,7 @@ void SecondReport_Plotting()
   	leg_histJetDeltaPhi -> SetBorderSize(0);
   	leg_histJetDeltaPhi -> SetFillColor(0);
 
-  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_Data , "Data" , "F");
+  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_Data , "Data" , "LEP");
   	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_WW, "WW", "F");
   	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_ttbar   , "ttbar"   , "F");
 
