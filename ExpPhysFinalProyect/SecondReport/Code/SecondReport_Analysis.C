@@ -198,7 +198,7 @@ class Analysis
 void SecondReport_Analysis()
 {
     unsigned int Runs = 3;
-    vector<string> Datasets = {"data", "ttbar", "WW"};
+    vector<string> Datasets = {"signal", "ttbar", "WW"};
 
     Analysis *obj1 = new Analysis();
 

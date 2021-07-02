@@ -1,6 +1,6 @@
 void SecondReport_Plotting()
 {
-	TFile *f1 = TFile::Open("Hists_output_simulated_data_two.root", "READ");
+	TFile *f1 = TFile::Open("Hists_signal.root", "READ");
   	TFile *f2 = TFile::Open("Hists_WW.root"                       , "READ");
   	TFile *f3 = TFile::Open("Hists_ttbar.root"                    , "READ");
 
@@ -9,25 +9,25 @@ void SecondReport_Plotting()
 	// Charginos
 	// Hist Chargino PT  
 
-  	TH1F *histCharginoPT_Data  = (TH1F*) f1 -> Get("histCharginoPT");
+  	TH1F *histCharginoPT_Signal  = (TH1F*) f1 -> Get("histCharginoPT");
 
   	TLegend *leg_histCharginoPT = new TLegend(0.7, 0.70, 0.9, 0.89);
   	leg_histCharginoPT -> SetBorderSize(0);
   	leg_histCharginoPT -> SetFillColor(0);
 
-  	leg_histCharginoPT -> AddEntry(histCharginoPT_Data , "Data" , "F");
+  	leg_histCharginoPT -> AddEntry(histCharginoPT_Signal , "Signal" , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histCharginoPT_Data  -> SetLineColor(kBlue);
+	histCharginoPT_Signal  -> SetLineColor(kBlue);
 
-  	histCharginoPT_Data -> SetTitle("Chargino P_{T}");
-  	histCharginoPT_Data -> GetXaxis() -> SetTitle("p_{T} [GeV]");
-  	histCharginoPT_Data -> GetYaxis() -> SetTitle("Entries");
-  	histCharginoPT_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoPT_Data -> SetStats(0);
-	histCharginoPT_Data -> Draw();
+  	histCharginoPT_Signal -> SetTitle("Chargino P_{T}");
+  	histCharginoPT_Signal -> GetXaxis() -> SetTitle("p_{T} [GeV]");
+  	histCharginoPT_Signal -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoPT_Signal -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoPT_Signal -> SetStats(0);
+	histCharginoPT_Signal -> Draw();
 	leg_histCharginoPT -> Draw("same");
 
   	c -> SaveAs("histCharginoPT.png");
@@ -37,25 +37,25 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();  
 
-  	TH1F *histCharginoE_Data  = (TH1F*) f1 -> Get("histCharginoE");
+  	TH1F *histCharginoE_Signal  = (TH1F*) f1 -> Get("histCharginoE");
 
   	TLegend *leg_histCharginoE = new TLegend(0.7, 0.70, 0.9, 0.89);
   	leg_histCharginoE -> SetBorderSize(0);
   	leg_histCharginoE -> SetFillColor(0);
 
-  	leg_histCharginoE -> AddEntry(histCharginoE_Data , "Data" , "F");
+  	leg_histCharginoE -> AddEntry(histCharginoE_Signal , "Signal" , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histCharginoE_Data  -> SetLineColor(kBlue);
+	histCharginoE_Signal  -> SetLineColor(kBlue);
 
-  	histCharginoE_Data -> SetTitle("Chargino E");
-  	histCharginoE_Data -> GetXaxis() -> SetTitle("E [GeV]");
-  	histCharginoE_Data -> GetYaxis() -> SetTitle("Entries");
-  	histCharginoE_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoE_Data -> SetStats(0);
-	histCharginoE_Data -> Draw();
+  	histCharginoE_Signal -> SetTitle("Chargino E");
+  	histCharginoE_Signal -> GetXaxis() -> SetTitle("E [GeV]");
+  	histCharginoE_Signal -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoE_Signal -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoE_Signal -> SetStats(0);
+	histCharginoE_Signal -> Draw();
 	leg_histCharginoE -> Draw("same");
 
   	c -> SaveAs("histCharginoE.png");
@@ -65,25 +65,25 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histCharginoEta_Data  = (TH1F*) f1 -> Get("histCharginoEta");
+	TH1F *histCharginoEta_Signal  = (TH1F*) f1 -> Get("histCharginoEta");
 
   	TLegend *leg_histCharginoEta = new TLegend(0.7, 0.70, 0.9, 0.89);
   	leg_histCharginoEta -> SetBorderSize(0);
   	leg_histCharginoEta -> SetFillColor(0);
 
-  	leg_histCharginoEta -> AddEntry(histCharginoEta_Data , "Data" , "F");
+  	leg_histCharginoEta -> AddEntry(histCharginoEta_Signal , "Signal" , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histCharginoEta_Data  -> SetLineColor(kBlue);
+	histCharginoEta_Signal  -> SetLineColor(kBlue);
 
-  	histCharginoEta_Data -> SetTitle("Chargino #eta");
-  	histCharginoEta_Data -> GetXaxis() -> SetTitle("#eta");
-  	histCharginoEta_Data -> GetYaxis() -> SetTitle("Entries");
-  	histCharginoEta_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoEta_Data -> SetStats(0);
- 	histCharginoEta_Data -> Draw();
+  	histCharginoEta_Signal -> SetTitle("Chargino #eta");
+  	histCharginoEta_Signal -> GetXaxis() -> SetTitle("#eta");
+  	histCharginoEta_Signal -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoEta_Signal -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoEta_Signal -> SetStats(0);
+ 	histCharginoEta_Signal -> Draw();
 	leg_histCharginoEta -> Draw("same");
 	
   	c -> SaveAs("histCharginoEta.png");
@@ -93,25 +93,25 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histCharginoPhi_Data  = (TH1F*) f1 -> Get("histCharginoPhi");
+	TH1F *histCharginoPhi_Signal  = (TH1F*) f1 -> Get("histCharginoPhi");
 
   	TLegend *leg_histCharginoPhi = new TLegend(0.7, 0.70, 0.9, 0.89);
   	leg_histCharginoPhi -> SetBorderSize(0);
   	leg_histCharginoPhi -> SetFillColor(0);
 
-  	leg_histCharginoPhi -> AddEntry(histCharginoPhi_Data , "Data" , "F");
+  	leg_histCharginoPhi -> AddEntry(histCharginoPhi_Signal , "Signal" , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histCharginoPhi_Data  -> SetLineColor(kBlue);
+	histCharginoPhi_Signal  -> SetLineColor(kBlue);
 
-  	histCharginoPhi_Data -> SetTitle("Chargino #phi");
-  	histCharginoPhi_Data -> GetXaxis() -> SetTitle("#phi");
-  	histCharginoPhi_Data -> GetYaxis() -> SetTitle("Entries");
-  	histCharginoPhi_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoPhi_Data -> SetStats(0);
-	histCharginoPhi_Data -> Draw();
+  	histCharginoPhi_Signal -> SetTitle("Chargino #phi");
+  	histCharginoPhi_Signal -> GetXaxis() -> SetTitle("#phi");
+  	histCharginoPhi_Signal -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoPhi_Signal -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoPhi_Signal -> SetStats(0);
+	histCharginoPhi_Signal -> Draw();
 	leg_histCharginoPhi -> Draw("same");
 
   	c -> SaveAs("histCharginoPhi.png");
@@ -121,25 +121,25 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histCharginoMass_Data  = (TH1F*) f1 -> Get("histCharginoMass");
+	TH1F *histCharginoMass_Signal  = (TH1F*) f1 -> Get("histCharginoMass");
 
   	TLegend *leg_histCharginoMass = new TLegend(0.7, 0.70, 0.9, 0.89);
   	leg_histCharginoMass -> SetBorderSize(0);
   	leg_histCharginoMass -> SetFillColor(0);
 
-  	leg_histCharginoMass -> AddEntry(histCharginoMass_Data , "Data" , "F");
+  	leg_histCharginoMass -> AddEntry(histCharginoMass_Signal , "Signal" , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histCharginoMass_Data  -> SetLineColor(kBlue);
+	histCharginoMass_Signal  -> SetLineColor(kBlue);
 
-  	histCharginoMass_Data -> SetTitle("Chargino Mass");
-  	histCharginoMass_Data -> GetXaxis() -> SetTitle("Mass [GeV]");
-  	histCharginoMass_Data -> GetYaxis() -> SetTitle("Entries");
-  	histCharginoMass_Data -> GetYaxis() -> SetTitleOffset(1.4);
-  	histCharginoMass_Data -> SetStats(0);
-	histCharginoMass_Data -> Draw();
+  	histCharginoMass_Signal -> SetTitle("Chargino Mass");
+  	histCharginoMass_Signal -> GetXaxis() -> SetTitle("Mass [GeV]");
+  	histCharginoMass_Signal -> GetYaxis() -> SetTitle("Entries");
+  	histCharginoMass_Signal -> GetYaxis() -> SetTitleOffset(1.4);
+  	histCharginoMass_Signal -> SetStats(0);
+	histCharginoMass_Signal -> Draw();
 	leg_histCharginoMass -> Draw("same");
 
   	c -> SaveAs("histCharginoMass.png");
@@ -147,7 +147,7 @@ void SecondReport_Plotting()
 	// Electrons
 	// Hist Electron PT  
 
-  	TH1F *histElectronPT_Data  = (TH1F*) f1 -> Get("histElectronPT");
+  	TH1F *histElectronPT_Signal  = (TH1F*) f1 -> Get("histElectronPT");
   	TH1F *histElectronPT_WW = (TH1F*) f2 -> Get("histElectronPT");
   	TH1F *histElectronPT_ttbar    = (TH1F*) f3 -> Get("histElectronPT");
 
@@ -157,15 +157,15 @@ void SecondReport_Plotting()
   	leg_histElectronPT -> SetBorderSize(0);
   	leg_histElectronPT -> SetFillColor(0);
 
-  	leg_histElectronPT -> AddEntry(histElectronPT_Data , "Data" , "LEP");
-  	leg_histElectronPT -> AddEntry(histElectronPT_WW, "WW", "F");
+  	leg_histElectronPT -> AddEntry(histElectronPT_Signal , "Signal" , "LEP");
+  	leg_histElectronPT -> AddEntry(histElectronPT_WW, "W^{+}W^{-}", "F");
   	leg_histElectronPT -> AddEntry(histElectronPT_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histElectronPT_Data  -> SetLineColor(kBlue);
-  	histElectronPT_Data  -> Scale((histElectronPT_WW -> Integral() + histElectronPT_ttbar -> Integral())/histElectronPT_Data -> Integral());
+	histElectronPT_Signal  -> SetLineColor(kBlue);
+  	histElectronPT_Signal  -> Scale((histElectronPT_WW -> Integral() + histElectronPT_ttbar -> Integral())/histElectronPT_Signal -> Integral());
   	histElectronPT_WW -> SetLineColor(kBlack);
   	histElectronPT_WW -> SetFillColor(kGreen);
   	histElectronPT_ttbar    -> SetLineColor(kBlack);
@@ -180,7 +180,7 @@ void SecondReport_Plotting()
   	hs_histElectronPT -> GetYaxis() -> SetTitle("Entries");
   	hs_histElectronPT -> GetYaxis() -> SetTitleOffset(1.4);
   	leg_histElectronPT -> Draw();
-  	histElectronPT_Data -> Draw("same:e1");
+  	histElectronPT_Signal -> Draw("same:e1");
 
   	c -> SaveAs("histElectronPT.png");
 
@@ -189,7 +189,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histElectronEta_Data  = (TH1F*) f1 -> Get("histElectronEta");
+	TH1F *histElectronEta_Signal  = (TH1F*) f1 -> Get("histElectronEta");
   	TH1F *histElectronEta_WW = (TH1F*) f2 -> Get("histElectronEta");
   	TH1F *histElectronEta_ttbar    = (TH1F*) f3 -> Get("histElectronEta");
 
@@ -199,15 +199,15 @@ void SecondReport_Plotting()
   	leg_histElectronEta -> SetBorderSize(0);
   	leg_histElectronEta -> SetFillColor(0);
 
-  	leg_histElectronEta -> AddEntry(histElectronEta_Data , "Data" , "LEP");
-  	leg_histElectronEta -> AddEntry(histElectronEta_WW, "WW", "F");
+  	leg_histElectronEta -> AddEntry(histElectronEta_Signal , "Signal" , "LEP");
+  	leg_histElectronEta -> AddEntry(histElectronEta_WW, "W^{+}W^{-}", "F");
   	leg_histElectronEta -> AddEntry(histElectronEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histElectronEta_Data  -> SetLineColor(kBlue);
-  	histElectronEta_Data  -> Scale((histElectronEta_WW -> Integral() + histElectronEta_ttbar -> Integral())/histElectronEta_Data -> Integral());
+	histElectronEta_Signal  -> SetLineColor(kBlue);
+  	histElectronEta_Signal  -> Scale((histElectronEta_WW -> Integral() + histElectronEta_ttbar -> Integral())/histElectronEta_Signal -> Integral());
   	histElectronEta_WW -> SetLineColor(kBlack);
   	histElectronEta_WW -> SetFillColor(kGreen);
   	histElectronEta_ttbar    -> SetLineColor(kBlack);
@@ -222,7 +222,7 @@ void SecondReport_Plotting()
   	hs_histElectronEta -> GetYaxis()->SetTitle("Entries");
   	hs_histElectronEta -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histElectronEta -> Draw();
-  	histElectronEta_Data -> Draw("same:e1");
+  	histElectronEta_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histElectronEta.png");
 
@@ -231,7 +231,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histElectronPhi_Data  = (TH1F*) f1 -> Get("histElectronPhi");
+	TH1F *histElectronPhi_Signal  = (TH1F*) f1 -> Get("histElectronPhi");
   	TH1F *histElectronPhi_WW = (TH1F*) f2 -> Get("histElectronPhi");
   	TH1F *histElectronPhi_ttbar    = (TH1F*) f3 -> Get("histElectronPhi");
 
@@ -241,15 +241,15 @@ void SecondReport_Plotting()
   	leg_histElectronPhi -> SetBorderSize(0);
   	leg_histElectronPhi -> SetFillColor(0);
 
-  	leg_histElectronPhi -> AddEntry(histElectronPhi_Data , "Data" , "LEP");
-  	leg_histElectronPhi -> AddEntry(histElectronPhi_WW, "WW", "F");
+  	leg_histElectronPhi -> AddEntry(histElectronPhi_Signal , "Signal" , "LEP");
+  	leg_histElectronPhi -> AddEntry(histElectronPhi_WW, "W^{+}W^{-}", "F");
   	leg_histElectronPhi -> AddEntry(histElectronPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histElectronPhi_Data  -> SetLineColor(kBlue);
-  	histElectronPhi_Data  -> Scale((histElectronPhi_WW -> Integral() + histElectronPhi_ttbar -> Integral())/histElectronPhi_Data -> Integral());
+	histElectronPhi_Signal  -> SetLineColor(kBlue);
+  	histElectronPhi_Signal  -> Scale((histElectronPhi_WW -> Integral() + histElectronPhi_ttbar -> Integral())/histElectronPhi_Signal -> Integral());
   	histElectronPhi_WW -> SetLineColor(kBlack);
   	histElectronPhi_WW -> SetFillColor(kGreen);
   	histElectronPhi_ttbar    -> SetLineColor(kBlack);
@@ -264,14 +264,14 @@ void SecondReport_Plotting()
   	hs_histElectronPhi -> GetYaxis()->SetTitle("Entries");
   	hs_histElectronPhi -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histElectronPhi -> Draw();
-  	histElectronPhi_Data -> Draw("same:e1");
+  	histElectronPhi_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histElectronPhi.png");
 
 	// Muons
 	// Hist Muon PT  
 
-  	TH1F *histMuonPT_Data  = (TH1F*) f1 -> Get("histMuonPT");
+  	TH1F *histMuonPT_Signal  = (TH1F*) f1 -> Get("histMuonPT");
   	TH1F *histMuonPT_WW = (TH1F*) f2 -> Get("histMuonPT");
   	TH1F *histMuonPT_ttbar    = (TH1F*) f3 -> Get("histMuonPT");
 
@@ -281,15 +281,15 @@ void SecondReport_Plotting()
   	leg_histMuonPT -> SetBorderSize(0);
   	leg_histMuonPT -> SetFillColor(0);
 
-  	leg_histMuonPT -> AddEntry(histMuonPT_Data , "Data" , "LEP");
-  	leg_histMuonPT -> AddEntry(histMuonPT_WW, "WW", "F");
+  	leg_histMuonPT -> AddEntry(histMuonPT_Signal , "Signal" , "LEP");
+  	leg_histMuonPT -> AddEntry(histMuonPT_WW, "W^{+}W^{-}", "F");
   	leg_histMuonPT -> AddEntry(histMuonPT_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histMuonPT_Data  -> SetLineColor(kBlue);
-  	histMuonPT_Data  -> Scale((histMuonPT_WW -> Integral() + histMuonPT_ttbar -> Integral())/histMuonPT_Data -> Integral());
+	histMuonPT_Signal  -> SetLineColor(kBlue);
+  	histMuonPT_Signal  -> Scale((histMuonPT_WW -> Integral() + histMuonPT_ttbar -> Integral())/histMuonPT_Signal -> Integral());
   	histMuonPT_WW -> SetLineColor(kBlack);
   	histMuonPT_WW -> SetFillColor(kGreen);
   	histMuonPT_ttbar    -> SetLineColor(kBlack);
@@ -304,7 +304,7 @@ void SecondReport_Plotting()
   	hs_histMuonPT -> GetYaxis() -> SetTitle("Entries");
   	hs_histMuonPT -> GetYaxis() -> SetTitleOffset(1.4);
   	leg_histMuonPT -> Draw();
-  	histMuonPT_Data -> Draw("same:e1");
+  	histMuonPT_Signal -> Draw("same:e1");
 
   	c -> SaveAs("histMuonPT.png");
 
@@ -313,7 +313,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histMuonEta_Data  = (TH1F*) f1 -> Get("histMuonEta");
+	TH1F *histMuonEta_Signal  = (TH1F*) f1 -> Get("histMuonEta");
   	TH1F *histMuonEta_WW = (TH1F*) f2 -> Get("histMuonEta");
   	TH1F *histMuonEta_ttbar    = (TH1F*) f3 -> Get("histMuonEta");
 
@@ -323,15 +323,15 @@ void SecondReport_Plotting()
   	leg_histMuonEta -> SetBorderSize(0);
   	leg_histMuonEta -> SetFillColor(0);
 
-  	leg_histMuonEta -> AddEntry(histMuonEta_Data , "Data" , "LEP");
-  	leg_histMuonEta -> AddEntry(histMuonEta_WW, "WW", "F");
+  	leg_histMuonEta -> AddEntry(histMuonEta_Signal , "Signal" , "LEP");
+  	leg_histMuonEta -> AddEntry(histMuonEta_WW, "W^{+}W^{-}", "F");
   	leg_histMuonEta -> AddEntry(histMuonEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histMuonEta_Data  -> SetLineColor(kBlue);
-  	histMuonEta_Data  -> Scale((histMuonEta_WW -> Integral() + histMuonEta_ttbar -> Integral())/histMuonEta_Data -> Integral());
+	histMuonEta_Signal  -> SetLineColor(kBlue);
+  	histMuonEta_Signal  -> Scale((histMuonEta_WW -> Integral() + histMuonEta_ttbar -> Integral())/histMuonEta_Signal -> Integral());
   	histMuonEta_WW -> SetLineColor(kBlack);
   	histMuonEta_WW -> SetFillColor(kGreen);
   	histMuonEta_ttbar    -> SetLineColor(kBlack);
@@ -346,7 +346,7 @@ void SecondReport_Plotting()
   	hs_histMuonEta -> GetYaxis()->SetTitle("Entries");
   	hs_histMuonEta -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histMuonEta -> Draw();
-  	histMuonEta_Data -> Draw("same:e1");
+  	histMuonEta_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histMuonEta.png");
 
@@ -355,7 +355,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histMuonPhi_Data  = (TH1F*) f1 -> Get("histMuonPhi");
+	TH1F *histMuonPhi_Signal  = (TH1F*) f1 -> Get("histMuonPhi");
   	TH1F *histMuonPhi_WW = (TH1F*) f2 -> Get("histMuonPhi");
   	TH1F *histMuonPhi_ttbar    = (TH1F*) f3 -> Get("histMuonPhi");
 
@@ -365,15 +365,15 @@ void SecondReport_Plotting()
   	leg_histMuonPhi -> SetBorderSize(0);
   	leg_histMuonPhi -> SetFillColor(0);
 
-  	leg_histMuonPhi -> AddEntry(histMuonPhi_Data , "Data" , "LEP");
-  	leg_histMuonPhi -> AddEntry(histMuonPhi_WW, "WW", "F");
+  	leg_histMuonPhi -> AddEntry(histMuonPhi_Signal , "Signal" , "LEP");
+  	leg_histMuonPhi -> AddEntry(histMuonPhi_WW, "W^{+}W^{-}", "F");
   	leg_histMuonPhi -> AddEntry(histMuonPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histMuonPhi_Data  -> SetLineColor(kBlue);
-  	histMuonPhi_Data  -> Scale((histMuonPhi_WW -> Integral() + histMuonPhi_ttbar -> Integral())/histMuonPhi_Data -> Integral());
+	histMuonPhi_Signal  -> SetLineColor(kBlue);
+  	histMuonPhi_Signal  -> Scale((histMuonPhi_WW -> Integral() + histMuonPhi_ttbar -> Integral())/histMuonPhi_Signal -> Integral());
   	histMuonPhi_WW -> SetLineColor(kBlack);
   	histMuonPhi_WW -> SetFillColor(kGreen);
   	histMuonPhi_ttbar    -> SetLineColor(kBlack);
@@ -388,14 +388,14 @@ void SecondReport_Plotting()
   	hs_histMuonPhi -> GetYaxis()->SetTitle("Entries");
   	hs_histMuonPhi -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histMuonPhi -> Draw();
-  	histMuonPhi_Data -> Draw("same:e1");
+  	histMuonPhi_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histMuonPhi.png");
 
 	// MissingET
 	// Hist MissingET MET 
 
-  	TH1F *histMissingETMET_Data  = (TH1F*) f1 -> Get("histMissingETMET");
+  	TH1F *histMissingETMET_Signal  = (TH1F*) f1 -> Get("histMissingETMET");
   	TH1F *histMissingETMET_WW = (TH1F*) f2 -> Get("histMissingETMET");
   	TH1F *histMissingETMET_ttbar    = (TH1F*) f3 -> Get("histMissingETMET");
 
@@ -405,15 +405,15 @@ void SecondReport_Plotting()
   	leg_histMissingETMET -> SetBorderSize(0);
   	leg_histMissingETMET -> SetFillColor(0);
 
-  	leg_histMissingETMET -> AddEntry(histMissingETMET_Data , "Data" , "LEP");
-  	leg_histMissingETMET -> AddEntry(histMissingETMET_WW, "WW", "F");
+  	leg_histMissingETMET -> AddEntry(histMissingETMET_Signal , "Signal" , "LEP");
+  	leg_histMissingETMET -> AddEntry(histMissingETMET_WW, "W^{+}W^{-}", "F");
   	leg_histMissingETMET -> AddEntry(histMissingETMET_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histMissingETMET_Data  -> SetLineColor(kBlue);
-  	histMissingETMET_Data  -> Scale((histMissingETMET_WW -> Integral() + histMissingETMET_ttbar -> Integral())/histMissingETMET_Data -> Integral());
+	histMissingETMET_Signal  -> SetLineColor(kBlue);
+  	histMissingETMET_Signal  -> Scale((histMissingETMET_WW -> Integral() + histMissingETMET_ttbar -> Integral())/histMissingETMET_Signal -> Integral());
   	histMissingETMET_WW -> SetLineColor(kBlack);
   	histMissingETMET_WW -> SetFillColor(kGreen);
   	histMissingETMET_ttbar    -> SetLineColor(kBlack);
@@ -428,7 +428,7 @@ void SecondReport_Plotting()
   	hs_histMissingETMET -> GetYaxis() -> SetTitle("Entries");
   	hs_histMissingETMET -> GetYaxis() -> SetTitleOffset(1.4);
   	leg_histMissingETMET -> Draw();
-  	histMissingETMET_Data -> Draw("same:e1");
+  	histMissingETMET_Signal -> Draw("same:e1");
 
   	c -> SaveAs("histMissingETMET.png");
 
@@ -437,7 +437,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histMissingETEta_Data  = (TH1F*) f1 -> Get("histMissingETEta");
+	TH1F *histMissingETEta_Signal  = (TH1F*) f1 -> Get("histMissingETEta");
   	TH1F *histMissingETEta_WW = (TH1F*) f2 -> Get("histMissingETEta");
   	TH1F *histMissingETEta_ttbar    = (TH1F*) f3 -> Get("histMissingETEta");
 
@@ -447,15 +447,15 @@ void SecondReport_Plotting()
   	leg_histMissingETEta -> SetBorderSize(0);
   	leg_histMissingETEta -> SetFillColor(0);
 
-  	leg_histMissingETEta -> AddEntry(histMissingETEta_Data , "Data" , "LEP");
-  	leg_histMissingETEta -> AddEntry(histMissingETEta_WW, "WW", "F");
+  	leg_histMissingETEta -> AddEntry(histMissingETEta_Signal , "Signal" , "LEP");
+  	leg_histMissingETEta -> AddEntry(histMissingETEta_WW, "W^{+}W^{-}", "F");
   	leg_histMissingETEta -> AddEntry(histMissingETEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histMissingETEta_Data  -> SetLineColor(kBlue);
-  	histMissingETEta_Data  -> Scale((histMissingETEta_WW -> Integral() + histMissingETEta_ttbar -> Integral())/histMissingETEta_Data -> Integral());
+	histMissingETEta_Signal  -> SetLineColor(kBlue);
+  	histMissingETEta_Signal  -> Scale((histMissingETEta_WW -> Integral() + histMissingETEta_ttbar -> Integral())/histMissingETEta_Signal -> Integral());
   	histMissingETEta_WW -> SetLineColor(kBlack);
   	histMissingETEta_WW -> SetFillColor(kGreen);
   	histMissingETEta_ttbar    -> SetLineColor(kBlack);
@@ -470,7 +470,7 @@ void SecondReport_Plotting()
   	hs_histMissingETEta -> GetYaxis()->SetTitle("Entries");
   	hs_histMissingETEta -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histMissingETEta -> Draw();
-  	histMissingETEta_Data -> Draw("same:e1");
+  	histMissingETEta_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histMissingETEta.png");
 
@@ -479,7 +479,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histMissingETPhi_Data  = (TH1F*) f1 -> Get("histMissingETPhi");
+	TH1F *histMissingETPhi_Signal  = (TH1F*) f1 -> Get("histMissingETPhi");
   	TH1F *histMissingETPhi_WW = (TH1F*) f2 -> Get("histMissingETPhi");
   	TH1F *histMissingETPhi_ttbar    = (TH1F*) f3 -> Get("histMissingETPhi");
 
@@ -489,15 +489,15 @@ void SecondReport_Plotting()
   	leg_histMissingETPhi -> SetBorderSize(0);
   	leg_histMissingETPhi -> SetFillColor(0);
 
-  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_Data , "Data" , "LEP");
-  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_WW, "WW", "F");
+  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_Signal , "Signal" , "LEP");
+  	leg_histMissingETPhi -> AddEntry(histMissingETPhi_WW, "W^{+}W^{-}", "F");
   	leg_histMissingETPhi -> AddEntry(histMissingETPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histMissingETPhi_Data  -> SetLineColor(kBlue);
-  	histMissingETPhi_Data  -> Scale((histMissingETPhi_WW -> Integral() + histMissingETPhi_ttbar -> Integral())/histMissingETPhi_Data -> Integral());
+	histMissingETPhi_Signal  -> SetLineColor(kBlue);
+  	histMissingETPhi_Signal  -> Scale((histMissingETPhi_WW -> Integral() + histMissingETPhi_ttbar -> Integral())/histMissingETPhi_Signal -> Integral());
   	histMissingETPhi_WW -> SetLineColor(kBlack);
   	histMissingETPhi_WW -> SetFillColor(kGreen);
   	histMissingETPhi_ttbar    -> SetLineColor(kBlack);
@@ -512,14 +512,14 @@ void SecondReport_Plotting()
   	hs_histMissingETPhi -> GetYaxis()->SetTitle("Entries");
   	hs_histMissingETPhi -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histMissingETPhi -> Draw();
-  	histMissingETPhi_Data -> Draw("same:e1");
+  	histMissingETPhi_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histMissingETPhi.png");
 
     // Jet
 	// Hist Jet PT 
 
-  	TH1F *histJetPT_Data  = (TH1F*) f1 -> Get("histJetPT");
+  	TH1F *histJetPT_Signal  = (TH1F*) f1 -> Get("histJetPT");
   	TH1F *histJetPT_WW = (TH1F*) f2 -> Get("histJetPT");
   	TH1F *histJetPT_ttbar    = (TH1F*) f3 -> Get("histJetPT");
 
@@ -529,15 +529,15 @@ void SecondReport_Plotting()
   	leg_histJetPT -> SetBorderSize(0);
   	leg_histJetPT -> SetFillColor(0);
 
-  	leg_histJetPT -> AddEntry(histJetPT_Data , "Data" , "LEP");
-  	leg_histJetPT -> AddEntry(histJetPT_WW, "WW", "F");
+  	leg_histJetPT -> AddEntry(histJetPT_Signal , "Signal" , "LEP");
+  	leg_histJetPT -> AddEntry(histJetPT_WW, "W^{+}W^{-}", "F");
   	leg_histJetPT -> AddEntry(histJetPT_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histJetPT_Data  -> SetLineColor(kBlue);
-  	histJetPT_Data  -> Scale((histJetPT_WW -> Integral() + histJetPT_ttbar -> Integral())/histJetPT_Data -> Integral());
+	histJetPT_Signal  -> SetLineColor(kBlue);
+  	histJetPT_Signal  -> Scale((histJetPT_WW -> Integral() + histJetPT_ttbar -> Integral())/histJetPT_Signal -> Integral());
   	histJetPT_WW -> SetLineColor(kBlack);
   	histJetPT_WW -> SetFillColor(kGreen);
   	histJetPT_ttbar    -> SetLineColor(kBlack);
@@ -552,7 +552,7 @@ void SecondReport_Plotting()
   	hs_histJetPT -> GetYaxis() -> SetTitle("Entries");
   	hs_histJetPT -> GetYaxis() -> SetTitleOffset(1.4);
   	leg_histJetPT -> Draw();
-  	histJetPT_Data -> Draw("same:e1");
+  	histJetPT_Signal -> Draw("same:e1");
 
   	c -> SaveAs("histJetPT.png");
 
@@ -561,7 +561,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histJetEta_Data  = (TH1F*) f1 -> Get("histJetEta");
+	TH1F *histJetEta_Signal  = (TH1F*) f1 -> Get("histJetEta");
   	TH1F *histJetEta_WW = (TH1F*) f2 -> Get("histJetEta");
   	TH1F *histJetEta_ttbar    = (TH1F*) f3 -> Get("histJetEta");
 
@@ -571,15 +571,15 @@ void SecondReport_Plotting()
   	leg_histJetEta -> SetBorderSize(0);
   	leg_histJetEta -> SetFillColor(0);
 
-  	leg_histJetEta -> AddEntry(histJetEta_Data , "Data" , "LEP");
-  	leg_histJetEta -> AddEntry(histJetEta_WW, "WW", "F");
+  	leg_histJetEta -> AddEntry(histJetEta_Signal , "Signal" , "LEP");
+  	leg_histJetEta -> AddEntry(histJetEta_WW, "W^{+}W^{-}", "F");
   	leg_histJetEta -> AddEntry(histJetEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histJetEta_Data  -> SetLineColor(kBlue);
-  	histJetEta_Data  -> Scale((histJetEta_WW -> Integral() + histJetEta_ttbar -> Integral())/histJetEta_Data -> Integral());
+	histJetEta_Signal  -> SetLineColor(kBlue);
+  	histJetEta_Signal  -> Scale((histJetEta_WW -> Integral() + histJetEta_ttbar -> Integral())/histJetEta_Signal -> Integral());
   	histJetEta_WW -> SetLineColor(kBlack);
   	histJetEta_WW -> SetFillColor(kGreen);
   	histJetEta_ttbar    -> SetLineColor(kBlack);
@@ -594,7 +594,7 @@ void SecondReport_Plotting()
   	hs_histJetEta -> GetYaxis()->SetTitle("Entries");
   	hs_histJetEta -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetEta -> Draw();
-  	histJetEta_Data -> Draw("same:e1");
+  	histJetEta_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histJetEta.png");
 
@@ -603,7 +603,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histJetPhi_Data  = (TH1F*) f1 -> Get("histJetPhi");
+	TH1F *histJetPhi_Signal  = (TH1F*) f1 -> Get("histJetPhi");
   	TH1F *histJetPhi_WW = (TH1F*) f2 -> Get("histJetPhi");
   	TH1F *histJetPhi_ttbar    = (TH1F*) f3 -> Get("histJetPhi");
 
@@ -613,15 +613,15 @@ void SecondReport_Plotting()
   	leg_histJetPhi -> SetBorderSize(0);
   	leg_histJetPhi -> SetFillColor(0);
 
-  	leg_histJetPhi -> AddEntry(histJetPhi_Data , "Data" , "LEP");
-  	leg_histJetPhi -> AddEntry(histJetPhi_WW, "WW", "F");
+  	leg_histJetPhi -> AddEntry(histJetPhi_Signal , "Signal" , "LEP");
+  	leg_histJetPhi -> AddEntry(histJetPhi_WW, "W^{+}W^{-}", "F");
   	leg_histJetPhi -> AddEntry(histJetPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histJetPhi_Data  -> SetLineColor(kBlue);
-  	histJetPhi_Data  -> Scale((histJetPhi_WW -> Integral() + histJetPhi_ttbar -> Integral())/histJetPhi_Data -> Integral());
+	histJetPhi_Signal  -> SetLineColor(kBlue);
+  	histJetPhi_Signal  -> Scale((histJetPhi_WW -> Integral() + histJetPhi_ttbar -> Integral())/histJetPhi_Signal -> Integral());
   	histJetPhi_WW -> SetLineColor(kBlack);
   	histJetPhi_WW -> SetFillColor(kGreen);
   	histJetPhi_ttbar    -> SetLineColor(kBlack);
@@ -636,7 +636,7 @@ void SecondReport_Plotting()
   	hs_histJetPhi -> GetYaxis()->SetTitle("Entries");
   	hs_histJetPhi -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetPhi -> Draw();
-  	histJetPhi_Data -> Draw("same:e1");
+  	histJetPhi_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histJetPhi.png");
 
@@ -645,7 +645,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histJetMass_Data  = (TH1F*) f1 -> Get("histJetMass");
+	TH1F *histJetMass_Signal  = (TH1F*) f1 -> Get("histJetMass");
   	TH1F *histJetMass_WW = (TH1F*) f2 -> Get("histJetMass");
   	TH1F *histJetMass_ttbar    = (TH1F*) f3 -> Get("histJetMass");
 
@@ -655,15 +655,15 @@ void SecondReport_Plotting()
   	leg_histJetMass -> SetBorderSize(0);
   	leg_histJetMass -> SetFillColor(0);
 
-  	leg_histJetMass -> AddEntry(histJetMass_Data , "Data" , "LEP");
-  	leg_histJetMass -> AddEntry(histJetMass_WW, "WW", "F");
+  	leg_histJetMass -> AddEntry(histJetMass_Signal , "Signal" , "LEP");
+  	leg_histJetMass -> AddEntry(histJetMass_WW, "W^{+}W^{-}", "F");
   	leg_histJetMass -> AddEntry(histJetMass_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histJetMass_Data  -> SetLineColor(kBlue);
-  	histJetMass_Data  -> Scale((histJetMass_WW -> Integral() + histJetMass_ttbar -> Integral())/histJetMass_Data -> Integral());
+	histJetMass_Signal  -> SetLineColor(kBlue);
+  	histJetMass_Signal  -> Scale((histJetMass_WW -> Integral() + histJetMass_ttbar -> Integral())/histJetMass_Signal -> Integral());
   	histJetMass_WW -> SetLineColor(kBlack);
   	histJetMass_WW -> SetFillColor(kGreen);
   	histJetMass_ttbar    -> SetLineColor(kBlack);
@@ -678,7 +678,7 @@ void SecondReport_Plotting()
   	hs_histJetMass -> GetYaxis()->SetTitle("Entries");
   	hs_histJetMass -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetMass -> Draw();
-  	histJetMass_Data -> Draw("same:e1");
+  	histJetMass_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histJetMass.png");
 
@@ -687,7 +687,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histJetDeltaEta_Data  = (TH1F*) f1 -> Get("histJetDeltaEta");
+	TH1F *histJetDeltaEta_Signal  = (TH1F*) f1 -> Get("histJetDeltaEta");
   	TH1F *histJetDeltaEta_WW = (TH1F*) f2 -> Get("histJetDeltaEta");
   	TH1F *histJetDeltaEta_ttbar    = (TH1F*) f3 -> Get("histJetDeltaEta");
 
@@ -697,15 +697,15 @@ void SecondReport_Plotting()
   	leg_histJetDeltaEta -> SetBorderSize(0);
   	leg_histJetDeltaEta -> SetFillColor(0);
 
-  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_Data , "Data" , "LEP");
-  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_WW, "WW", "F");
+  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_Signal , "Signal" , "LEP");
+  	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_WW, "W^{+}W^{-}", "F");
   	leg_histJetDeltaEta -> AddEntry(histJetDeltaEta_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histJetDeltaEta_Data  -> SetLineColor(kBlue);
-  	histJetDeltaEta_Data  -> Scale((histJetDeltaEta_WW -> Integral() + histJetDeltaEta_ttbar -> Integral())/histJetDeltaEta_Data -> Integral());
+	histJetDeltaEta_Signal  -> SetLineColor(kBlue);
+  	histJetDeltaEta_Signal  -> Scale((histJetDeltaEta_WW -> Integral() + histJetDeltaEta_ttbar -> Integral())/histJetDeltaEta_Signal -> Integral());
   	histJetDeltaEta_WW -> SetLineColor(kBlack);
   	histJetDeltaEta_WW -> SetFillColor(kGreen);
   	histJetDeltaEta_ttbar    -> SetLineColor(kBlack);
@@ -720,7 +720,7 @@ void SecondReport_Plotting()
   	hs_histJetDeltaEta -> GetYaxis()->SetTitle("Entries");
   	hs_histJetDeltaEta -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetDeltaEta -> Draw();
-  	histJetDeltaEta_Data -> Draw("same:e1");
+  	histJetDeltaEta_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histJetDeltaEta.png");
 
@@ -733,7 +733,7 @@ void SecondReport_Plotting()
 	c -> Clear();
   	c -> Modified();
 
-	TH1F *histJetDeltaPhi_Data  = (TH1F*) f1 -> Get("histJetDeltaPhi");
+	TH1F *histJetDeltaPhi_Signal  = (TH1F*) f1 -> Get("histJetDeltaPhi");
   	TH1F *histJetDeltaPhi_WW = (TH1F*) f2 -> Get("histJetDeltaPhi");
   	TH1F *histJetDeltaPhi_ttbar    = (TH1F*) f3 -> Get("histJetDeltaPhi");
 
@@ -743,15 +743,15 @@ void SecondReport_Plotting()
   	leg_histJetDeltaPhi -> SetBorderSize(0);
   	leg_histJetDeltaPhi -> SetFillColor(0);
 
-  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_Data , "Data" , "LEP");
-  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_WW, "WW", "F");
+  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_Signal , "Signal" , "LEP");
+  	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_WW, "W^{+}W^{-}", "F");
   	leg_histJetDeltaPhi -> AddEntry(histJetDeltaPhi_ttbar   , "ttbar"   , "F");
 
   	c -> Draw();
   	c -> SetLogy();
   	
-	histJetDeltaPhi_Data  -> SetLineColor(kBlue);
-  	histJetDeltaPhi_Data  -> Scale((histJetDeltaPhi_WW -> Integral() + histJetDeltaPhi_ttbar -> Integral())/histJetDeltaPhi_Data -> Integral());
+	histJetDeltaPhi_Signal  -> SetLineColor(kBlue);
+  	histJetDeltaPhi_Signal  -> Scale((histJetDeltaPhi_WW -> Integral() + histJetDeltaPhi_ttbar -> Integral())/histJetDeltaPhi_Signal -> Integral());
   	histJetDeltaPhi_WW -> SetLineColor(kBlack);
   	histJetDeltaPhi_WW -> SetFillColor(kGreen);
   	histJetDeltaPhi_ttbar    -> SetLineColor(kBlack);
@@ -766,7 +766,7 @@ void SecondReport_Plotting()
   	hs_histJetDeltaPhi -> GetYaxis()->SetTitle("Entries");
   	hs_histJetDeltaPhi -> GetYaxis()->SetTitleOffset(1.4);
   	leg_histJetDeltaPhi -> Draw();
-  	histJetDeltaPhi_Data -> Draw("same:e1");
+  	histJetDeltaPhi_Signal -> Draw("same:e1");
 
 	c -> SaveAs("histJetDeltaPhi.png");
 
