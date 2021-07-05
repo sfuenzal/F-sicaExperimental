@@ -48,7 +48,7 @@ class weight
 int main()
 {
     unsigned int GenratedEvents;
-    float SigmaInput;
+    double SigmaInput;
     
     cout << "Please enter the number of generated events: " << endl;
     cin >> GenratedEvents;
