@@ -1,0 +1,24 @@
+set group_subprocesses Auto
+set ignore_six_quark_processes False
+set gauge unitary
+set complex_mass_scheme False
+import model sm
+define p = g u c d s u~ c~ d~ s~
+define j = g u c d s u~ c~ d~ s~
+define l+ = e+ mu+
+define l- = e- mu-
+define vl = ve vm vt
+define vl~ = ve~ vm~ vt~
+generate p p > t t~ 
+output /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar
+launch -i
+multi_run 3
+pythia=ON
+pgs=OFF
+delphes=ON
+set ebeam1 7000
+set ebeam2 7000
+set nevents 1000
+print_results --path=/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar/cs.txt --format=short
+
+
