@@ -72,7 +72,7 @@ class Analysis
                 // Load selected branches with data from specified event                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 treeReader -> ReadEntry(entry);
 		
-		TLorentzVector Chargino (0,0,0,0);                
+		//TLorentzVector Chargino (0,0,0,0);                
                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                 if(branchParticle -> GetEntries() > 0)
                 {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
@@ -85,13 +85,13 @@ class Analysis
 				{
 					TLorentzVector temp;
 					temp.SetPtEtaPhiE(particle -> PT, particle -> Eta, particle -> Phi, particle -> E);
-					Chargino += temp;
+					//Chargino += temp;
 					// Fill Particle histograms                                                                       
                         		histCharginoPT   -> Fill(particle -> PT);
                         		histCharginoE    -> Fill(particle -> E);
                         		histCharginoEta  -> Fill(particle -> Eta);
                         		histCharginoPhi  -> Fill(particle -> Phi);
-					histCharginoMass -> Fill(Chargino.M());
+					histCharginoMass -> Fill(temp.M());
 				}
 			}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 }
@@ -197,14 +197,13 @@ class Analysis
 
 void SecondReport_Analysis()
 {
-    unsigned int Runs = 3;
+    vector<unsigned int> Runs = {1, 3, 3};
     vector<string> Datasets = {"signal", "ttbar", "WW"};
 
     Analysis *obj1 = new Analysis();
 
     for (unsigned int i = 0; i < Datasets.size(); ++i)
     {
-        obj1 -> CharginosAnalysis(Datasets.at(i), Runs);
+        obj1 -> CharginosAnalysis(Datasets.at(i), Runs.at(i));
     }
-    
 }

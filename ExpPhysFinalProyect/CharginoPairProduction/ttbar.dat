@@ -1,3 +1,4 @@
+
 set group_subprocesses Auto
 set ignore_six_quark_processes False
 set gauge unitary
@@ -9,10 +10,11 @@ define l+ = e+ mu+
 define l- = e- mu-
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
-generate p p > t t~ 
+generate p p > t t~ > l- vl~ b b~ j j
+add process p p > t t~ > l+ vl b b~ j j
 output /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar
 launch -i
-multi_run 3
+multi_run 10
 pythia=ON
 pgs=OFF
 delphes=ON
@@ -22,7 +24,5 @@ set ptb 40
 set ptl 40
 set ebeam1 7000
 set ebeam2 7000
-set nevents 1000
+set nevents 100000
 print_results --path=/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar/cs.txt --format=short
-
-

@@ -21,7 +21,7 @@ class weight
                 L_gen = N_gen/sigma; 
                 w = L_int/L_gen;
 
-                if (w > 0.9 && w < 1.1)
+                if (w > 0.0001 && w < 10000)
                 {
                     cout << "The ideal weight is: " << w << endl;
                     break;
@@ -38,7 +38,7 @@ class weight
                     cin >> sigma;
                 }
 
-            } while(w < 0.9 || w > 1.1);
+            } while(w < 0.0001 || w > 10000);
         
         }
 
@@ -47,15 +47,17 @@ class weight
 
 int main()
 {
-    unsigned int GenratedEvents;
+    unsigned int GeneratedEvents;
     double SigmaInput;
     
     cout << "Please enter the number of generated events: " << endl;
-    cin >> GenratedEvents;
+    cin >> GeneratedEvents;
 
     cout << "Please enter the cross section in pb: " << endl;
     cin >> SigmaInput;
 
     weight *obj1 = new weight();
     obj1 -> weight_constructor(GenratedEvents, SigmaInput);
+
+    return 0;
 }

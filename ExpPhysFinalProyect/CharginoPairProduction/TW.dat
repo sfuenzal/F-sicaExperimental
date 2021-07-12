@@ -3,23 +3,25 @@ set ignore_six_quark_processes False
 set gauge unitary
 set complex_mass_scheme False
 import model sm
-define p = g u c d s u~ c~ d~ s~
+define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s u~ c~ d~ s~
 define l+ = e+ mu+
 define l- = e- mu-
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
-generate p p > w+ w-
-output /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/WW
+generate p p > t w-
+add process p p > t~ w+
+output /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/TW
 launch -i
 multi_run 10
 pythia=ON
 pgs=OFF
 delphes=ON
-set ptj 40
+set run_card ptj 40
+set cut_decays True
 set ptb 40
 set ptl 40
 set ebeam1 7000
 set ebeam2 7000
 set nevents 100000
-print_results --path=/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/WW/cs.txt --format=short
+print_results --path=/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/TW/cs.txt --format=short
