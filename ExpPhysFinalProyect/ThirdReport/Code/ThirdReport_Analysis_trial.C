@@ -10,7 +10,7 @@ class Analysis
         TString trigger;
         Float_t MZ = 90;
     public:
-        void CharginosAnalysis(TString fileName, unsigned int nfiles, Float_t weights)
+        void CharginosAnalysis(TString path, TString hist_names, UInt_t nfiles, Float_t weights)
         {
             gSystem -> AddDynamicPath("/user/e/edson/public/exp_phys/MG5_aMC_v3_1_0/Delphes/");
             gSystem -> Load("libDelphes");
@@ -22,7 +22,8 @@ class Analysis
             TChain chain("Delphes");
             for(UInt_t ifile = 0;ifile < nfiles;ifile++)
             {
-                file_name << inputpath << fileName << "/Events/run_01_" << ifile << "/tag_1_delphes_events.root";
+                //file_name << inputpath << fileName << "/Events/run_01_" << ifile << "/tag_1_delphes_events.root";
+                file_name << path << "run_01_" << ifile << "/tag_1_delphes_events.root";
                 chain.Add(file_name.str().c_str());
                 file_name.str("");
             }
@@ -31,7 +32,7 @@ class Analysis
             ExRootTreeReader *treeReader = new ExRootTreeReader(&chain);
             Long64_t numberOfEntries = treeReader -> GetEntries();
 
-            cout << "Number of Entries in " << fileName << ": " << numberOfEntries << endl;
+            cout << "Number of Entries in " << path << ": " << numberOfEntries << endl;
 
             // Get pointers to branches used in this analysis
 	        TClonesArray *branchParticle = treeReader -> UseBranch("Particle");
@@ -48,7 +49,7 @@ class Analysis
             for(UInt_t entry = 0; entry < numberOfEntries; ++entry)
             {
                 // print event number in the file
-                if(entry%1000 == 0) cout << fileName << ": " << "Reading Event " << entry << endl;
+                if(entry%1000 == 0) cout << path << ": " << "Reading Event " << entry << endl;
 
                 // Load selected branches with data from specified event
                 treeReader -> ReadEntry(entry);
@@ -130,7 +131,7 @@ class Analysis
                 }
             }
 
-            file_name << "Hists_" << fileName << ".root";
+            file_name << "Hists_" << hist_names << ".root";
             TFile *f = new TFile(file_name.str().c_str(), "RECREATE");
             histMET   -> Write("", TObject::kOverwrite);
             histMT2   -> Write("", TObject::kOverwrite);
@@ -139,14 +140,17 @@ class Analysis
 
 void ThirdReport_Analysis_trial()
 {
-    vector<unsigned int> Runs = {3, 3, 3, 3};
-    vector<TString> Datasets = {"signal_try", "ttbar_try", "TW_try", "WW_try"};
-    vector<Float_t> weights  = {0.0021       , 3         ,  19.5   ,    21};
+    vector<UInt_t> Runs  = {3, 20, 1};
+    vector<TString> Datasets   = {"/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/signal_try/Events/"
+                                  , "/data/atlas/dbetalhc/exphys/ttbar/Events/"
+                                  , "/data/atlas/dbetalhc/exphys/tW_events/tW0/Events/"};
+    vector<TString> Hist_names = {"signal", "ttbar", "tW"};
+    vector<Float_t> Weights    = {0.0007       , 30         ,  1950};
 
     Analysis *obj1 = new Analysis();
 
-    for (unsigned int i = 0; i < Datasets.size(); ++i)
+    for (UInt_t i = 0; i < Datasets.size(); ++i)
     {
-        obj1 -> CharginosAnalysis(Datasets.at(i), Runs.at(i), weights.at(i));
+        obj1 -> CharginosAnalysis(Datasets.at(i), Hist_names.at(i), Runs.at(i), Weights.at(i));
     }
 }

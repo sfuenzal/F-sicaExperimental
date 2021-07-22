@@ -110,17 +110,15 @@ void ThirdReport_Plotting()
 	
 
 	
-	TFile *f1 = TFile::Open("Hists_signal_try.root", "READ");
-  	TFile *f2 = TFile::Open("Hists_WW_try.root"    , "READ");
-  	TFile *f3 = TFile::Open("Hists_TW_try.root"    , "READ");
-	TFile *f4 = TFile::Open("Hists_ttbar_try.root" , "READ");
+	TFile *f1 = TFile::Open("Hists_signal.root", "READ");
+  	TFile *f2 = TFile::Open("Hists_tW.root"    , "READ");
+	TFile *f3 = TFile::Open("Hists_ttbar.root" , "READ");
 
 	TCanvas *c = new TCanvas("c1", "c1", 1024, 800);
 
   	TH1F *histMT2_Signal   = (TH1F*) f1 -> Get("histMT2");
-  	TH1F *histMT2_WW       = (TH1F*) f2 -> Get("histMT2");
-  	TH1F *histMT2_TW       = (TH1F*) f3 -> Get("histMT2");
-	TH1F *histMT2_ttbar    = (TH1F*) f4 -> Get("histMT2");
+  	TH1F *histMT2_TW       = (TH1F*) f2 -> Get("histMT2");
+	TH1F *histMT2_ttbar    = (TH1F*) f3 -> Get("histMT2");
 
   	THStack *hs_histMT2 = new THStack("hs_histMT2", "");
 
@@ -129,7 +127,6 @@ void ThirdReport_Plotting()
   	leg_histMT2 -> SetFillColor(0);
 
   	leg_histMT2 -> AddEntry(histMT2_Signal , "Signal" , "LEP");
-  	leg_histMT2 -> AddEntry(histMT2_WW, "WW", "F");
 	leg_histMT2 -> AddEntry(histMT2_TW, "tW", "F");
   	leg_histMT2 -> AddEntry(histMT2_ttbar   , "ttbar"   , "F");
 
@@ -137,15 +134,12 @@ void ThirdReport_Plotting()
   	c -> SetLogy();
   	
 	histMT2_Signal  -> SetLineColor(kBlack);
-  	histMT2_Signal  -> Scale((histMT2_WW -> Integral() + histMT2_TW -> Integral() + histMT2_ttbar -> Integral())/histMT2_Signal -> Integral());
-  	histMT2_WW -> SetLineColor(kBlack);
-  	histMT2_WW -> SetFillColor(kGreen - 3);
+  	histMT2_Signal  -> Scale((histMT2_TW -> Integral() + histMT2_ttbar -> Integral())/histMT2_Signal -> Integral());
 	histMT2_TW -> SetLineColor(kBlack);
   	histMT2_TW -> SetFillColor(kCyan - 3);
   	histMT2_ttbar    -> SetLineColor(kBlack);
   	histMT2_ttbar    -> SetFillColor(kRed - 3);
 
-  	hs_histMT2 -> Add(histMT2_WW);
   	hs_histMT2 -> Add(histMT2_TW);
 	hs_histMT2 -> Add(histMT2_ttbar);
 
@@ -163,9 +157,8 @@ void ThirdReport_Plotting()
   	c -> Modified();
 
 	TH1F *histMET_Signal   = (TH1F*) f1 -> Get("histMET");
-  	TH1F *histMET_WW       = (TH1F*) f2 -> Get("histMET");
-  	TH1F *histMET_TW       = (TH1F*) f3 -> Get("histMET");
-	TH1F *histMET_ttbar    = (TH1F*) f4 -> Get("histMET");
+  	TH1F *histMET_TW       = (TH1F*) f2 -> Get("histMET");
+	TH1F *histMET_ttbar    = (TH1F*) f3 -> Get("histMET");
 
   	THStack *hs_histMET = new THStack("hs_histMET", "");
 
@@ -174,7 +167,6 @@ void ThirdReport_Plotting()
   	leg_histMET -> SetFillColor(0);
 
   	leg_histMET -> AddEntry(histMET_Signal , "Signal" , "LEP");
-  	leg_histMET -> AddEntry(histMET_WW, "WW", "F");
 	leg_histMET -> AddEntry(histMET_TW, "tW", "F");
   	leg_histMET -> AddEntry(histMET_ttbar   , "ttbar"   , "F");
 
@@ -182,15 +174,13 @@ void ThirdReport_Plotting()
   	c -> SetLogy();
   	
 	histMET_Signal  -> SetLineColor(kBlack);
-  	histMET_Signal  -> Scale((histMET_WW -> Integral() + histMET_TW -> Integral() + histMET_ttbar -> Integral())/histMET_Signal -> Integral());
-  	histMET_WW -> SetLineColor(kBlack);
-  	histMET_WW -> SetFillColor(kGreen - 3);
+  	histMET_Signal  -> Scale((histMET_TW -> Integral() + histMET_ttbar -> Integral())/histMET_Signal -> Integral());
 	histMET_TW -> SetLineColor(kBlack);
   	histMET_TW -> SetFillColor(kCyan - 3);
   	histMET_ttbar    -> SetLineColor(kBlack);
   	histMET_ttbar    -> SetFillColor(kRed - 3);
 
-  	hs_histMET -> Add(histMET_WW);
+
   	hs_histMET -> Add(histMET_TW);
 	hs_histMET -> Add(histMET_ttbar);
 
