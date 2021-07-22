@@ -1,4 +1,5 @@
-#!/bin/bash                                                                                                                                                                                                         
+#!/bin/bash     
+#SBATCH -p short                                                                                                                                                                                                     
 #SBATCH --job-name=myjob                                                                                                                                                                                            
 #SBATCH -o myjob_out                                                                                                                                                                                                
 #SBATCH -e myjob_err                                                                                                                                                                                                
