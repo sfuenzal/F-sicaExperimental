@@ -11,7 +11,11 @@
 
 echo "Program Output begins: "
 
-use gcc61
-source /opt/software/root/6.10.06-gcc61/setup.sh
+mkdir /data/atlas/dbetalhc/exphys/ttbar_events
 
-./mg5_aMC ttbar.dat
+for i in {0..10} 
+do
+    use gcc61
+    source /opt/software/root/6.10.06-gcc61/setup.sh
+    ./mg5_aMC /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar_cards/ttbar$i.dat
+done
