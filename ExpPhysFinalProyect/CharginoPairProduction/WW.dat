@@ -10,7 +10,7 @@ define l- = e- mu-
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
 generate p p > w+ w-
-output /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/WW
+output /data/atlas/dbetalhc/exphys/WW_events/WW
 launch -i
 multi_run 10
 pythia=ON
@@ -22,4 +22,4 @@ set ptl 40
 set ebeam1 7000
 set ebeam2 7000
 set nevents 100000
-print_results --path=/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/WW/cs.txt --format=short
+print_results --path=/data/atlas/dbetalhc/exphys/WW_events/WW/cs.txt --format=short

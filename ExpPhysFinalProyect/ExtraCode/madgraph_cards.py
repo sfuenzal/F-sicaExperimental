@@ -64,7 +64,7 @@ class MadgraphCardsGenerator_tW(object):
        ,"set ptl 40"
        ,"set ebeam1 7000"
        ,"set ebeam2 7000"
-       ,"set nevents 50000"
+       ,"set nevents 10000"
        ,"print_results --path=/data/atlas/dbetalhc/exphys/tW_events/tW" + str(self.number) + "/cs.txt --format=short"]
         
         return aux

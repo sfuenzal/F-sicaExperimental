@@ -11,7 +11,8 @@
 
 echo "Program Output begins: "
 
+mkdir /data/atlas/dbetalhc/exphys/signal_events
+
 use gcc61
 source /opt/software/root/6.10.06-gcc61/setup.sh
-
-./mg5_aMC signal.dat
+./mg5_aMC /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/signal.dat

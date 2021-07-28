@@ -1,4 +1,3 @@
-
 set group_subprocesses Auto
 set ignore_six_quark_processes False
 set gauge unitary
@@ -10,9 +9,8 @@ define l+ = e+ mu+
 define l- = e- mu-
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
-generate p p > t t~ > l- vl~ b b~ j j
-add process p p > t t~ > l+ vl b b~ j j
-output /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar
+generate p p > t t~ , (t > b w+, w+ > l+ vl), (t~ > b~ w-, w- > l- vl~)
+output /data/atlas/dbetalhc/exphys/ttbar_events/ttbar
 launch -i
 multi_run 10
 pythia=ON
@@ -25,4 +23,4 @@ set ptl 40
 set ebeam1 7000
 set ebeam2 7000
 set nevents 100000
-print_results --path=/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar/cs.txt --format=short
+print_results --path=/data/atlas/dbetalhc/exphys/ttbar_events/ttbar/cs.txt --format=short

@@ -134,7 +134,6 @@ void ThirdReport_Plotting()
   	c -> SetLogy();
   	
 	histMT2_Signal  -> SetLineColor(kBlack);
-  	histMT2_Signal  -> Scale((histMT2_TW -> Integral() + histMT2_ttbar -> Integral())/histMT2_Signal -> Integral());
 	histMT2_TW -> SetLineColor(kBlack);
   	histMT2_TW -> SetFillColor(kCyan - 3);
   	histMT2_ttbar    -> SetLineColor(kBlack);
@@ -174,7 +173,6 @@ void ThirdReport_Plotting()
   	c -> SetLogy();
   	
 	histMET_Signal  -> SetLineColor(kBlack);
-  	histMET_Signal  -> Scale((histMET_TW -> Integral() + histMET_ttbar -> Integral())/histMET_Signal -> Integral());
 	histMET_TW -> SetLineColor(kBlack);
   	histMET_TW -> SetFillColor(kCyan - 3);
   	histMET_ttbar    -> SetLineColor(kBlack);

@@ -13,9 +13,6 @@ echo "Program Output begins: "
 
 mkdir /data/atlas/dbetalhc/exphys/WW_events
 
-for i in {0..10} 
-do
-    use gcc61
-    source /opt/software/root/6.10.06-gcc61/setup.sh
-    ./mg5_aMC /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/WW_cards/WW$i.dat
-done
+use gcc61
+source /opt/software/root/6.10.06-gcc61/setup.sh
+./mg5_aMC /user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/WW.dat
