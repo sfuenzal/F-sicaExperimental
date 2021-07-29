@@ -7,11 +7,11 @@ R__LOAD_LIBRARY(libDelphes)
 class Analysis
 {
     private:
-        array<Float_t, 3000> electronPT, electronEta, electronPhi;
-        array<Float_t, 3000> muonPT, muonEta, muonPhi;
-        array<Float_t, 3000> missingMET, missingEta, missingPhi;
-        array<Float_t, 3000> jetPT, jetEta, jetPhi, jetMass;
-        array<UInt_t, 3000> jetBTag;
+        array<Float_t, 1000000> electronPT, electronEta, electronPhi;
+        array<Float_t, 1000000> muonPT, muonEta, muonPhi;
+        array<Float_t, 1000000> missingMET, missingEta, missingPhi;
+        array<Float_t, 1000000> jetPT, jetEta;
+        array<UInt_t , 1000000> jetBTag;
         bool electronTrigger = false;
         bool muonTrigger = false;
         bool jetTrigger = false; 
@@ -62,16 +62,6 @@ class Analysis
             TH1F *histMT2_ee_SR3_0t   = new TH1F("histMT2_ee_SR3_0j0t"  , "MT2 ee"         , 10, 0, 1000);
             TH1F *histMET_ee_SR3_0t   = new TH1F("histMET_ee_SR3_0j0t"  , "p^{miss}_{T} ee", 15, 0, 1000);
 
-            //CRs
-            TH1F *histMT2_ee_CR1_1t   = new TH1F("histMT2_ee_CR1_1t"  , "MT2 ee"         , 10, 0, 1000);
-            TH1F *histMET_ee_CR1_1t   = new TH1F("histMET_ee_CR1_1t"  , "p^{miss}_{T} ee", 15, 0, 1000);
-
-            TH1F *histMT2_ee_CR2_1t   = new TH1F("histMT2_ee_CR2_1t"  , "MT2 ee"         , 10, 0, 1000);
-            TH1F *histMET_ee_CR2_1t   = new TH1F("histMET_ee_CR2_1t"  , "p^{miss}_{T} ee", 15, 0, 1000);
-
-            TH1F *histMT2_ee_CR3_1t   = new TH1F("histMT2_ee_CR3_1t"  , "MT2 ee"         , 10, 0, 1000);
-            TH1F *histMET_ee_CR3_1t   = new TH1F("histMET_ee_CR3_1t"  , "p^{miss}_{T} ee", 15, 0, 1000);
-
             // mumu trigger histograms
             //SRs
             TH1F *histMT2_mumu_SR1_0j0t   = new TH1F("histMT2_mumu_SR1_0j0t"  , "MT2 mumu"         , 10, 0, 1000);
@@ -87,16 +77,6 @@ class Analysis
             TH1F *histMT2_mumu_SR3_0t   = new TH1F("histMT2_mumu_SR3_0j0t"  , "MT2 mumu"         , 10, 0, 1000);
             TH1F *histMET_mumu_SR3_0t   = new TH1F("histMET_mumu_SR3_0j0t"  , "p^{miss}_{T} mumu", 15, 0, 1000);
 
-            //CRs
-            TH1F *histMT2_mumu_CR1_1t   = new TH1F("histMT2_mumu_CR1_1t"  , "MT2 mumu"         , 10, 0, 1000);
-            TH1F *histMET_mumu_CR1_1t   = new TH1F("histMET_mumu_CR1_1t"  , "p^{miss}_{T} mumu", 15, 0, 1000);
-
-            TH1F *histMT2_mumu_CR2_1t   = new TH1F("histMT2_mumu_CR2_1t"  , "MT2 mumu"         , 10, 0, 1000);
-            TH1F *histMET_mumu_CR2_1t   = new TH1F("histMET_mumu_CR2_1t"  , "p^{miss}_{T} mumu", 15, 0, 1000);
-
-            TH1F *histMT2_mumu_CR3_1t   = new TH1F("histMT2_mumu_CR3_1t"  , "MT2 mumu"         , 10, 0, 1000);
-            TH1F *histMET_mumu_CR3_1t   = new TH1F("histMET_mumu_CR3_1t"  , "p^{miss}_{T} mumu", 15, 0, 1000);
-
             // emu trigger histograms
             //SRs
             TH1F *histMT2_emu_SR1_0j0t   = new TH1F("histMT2_emu_SR1_0j0t"  , "MT2 emu"         , 10, 0, 1000);
@@ -111,16 +91,6 @@ class Analysis
 
             TH1F *histMT2_emu_SR3_0t   = new TH1F("histMT2_emu_SR3_0j0t"  , "MT2 emu"         , 10, 0, 1000);
             TH1F *histMET_emu_SR3_0t   = new TH1F("histMET_emu_SR3_0j0t"  , "p^{miss}_{T} emu", 15, 0, 1000);
-
-            //CRs
-            TH1F *histMT2_emu_CR1_1t   = new TH1F("histMT2_emu_CR1_1t"  , "MT2 emu"         , 10, 0, 1000);
-            TH1F *histMET_emu_CR1_1t   = new TH1F("histMET_emu_CR1_1t"  , "p^{miss}_{T} emu", 15, 0, 1000);
-
-            TH1F *histMT2_emu_CR2_1t   = new TH1F("histMT2_emu_CR2_1t"  , "MT2 emu"         , 10, 0, 1000);
-            TH1F *histMET_emu_CR2_1t   = new TH1F("histMET_emu_CR2_1t"  , "p^{miss}_{T} emu", 15, 0, 1000);
-
-            TH1F *histMT2_emu_CR3_1t   = new TH1F("histMT2_emu_CR3_1t"  , "MT2 emu"         , 10, 0, 1000);
-            TH1F *histMET_emu_CR3_1t   = new TH1F("histMET_emu_CR3_1t"  , "p^{miss}_{T} emu", 15, 0, 1000);
             
             // Loop over all events
             for(UInt_t entry = 0; entry < numberOfEntries; ++entry)
@@ -162,11 +132,11 @@ class Analysis
                     Jet *jet = (Jet*) branchJet -> At(0);
                     jetPT.fill(jet -> PT); 
                     jetEta.fill(jet -> Eta);
-                    jetPhi.fill(jet -> Phi);
-                    jetMass.fill(jet -> Mass);
                     jetBTag.fill(jet -> BTag);
                     !jetTrigger;                               
                 }
+
+                if (TMath::Abs(electronEta.at(entry)) > 2.5 && TMath::Abs(muonEta.at(entry)) > 2.5) continue;
 
                 //ee trigger
                 if (!electronTrigger)
@@ -175,11 +145,11 @@ class Analysis
 
                     if (electronPT.at(entry) >= 25 && TMath::Abs(electronEta.at(entry)) < 2.4)
                     {
-                        l1_ee. SetPtEtaPhiM(electronPT.at(entry), electronEta.at(entry), electronPhi.at(entry), 0); //use setptetaphiM
+                        l1_ee.SetPtEtaPhiM(electronPT.at(entry), electronEta.at(entry), electronPhi.at(entry), 0); 
                         
                         if (electronPT.at(entry) >= 20 && TMath::Abs(electronEta.at(entry)) < 2.4)
                         {
-                            l2_ee. SetPtEtaPhiM(electronPT.at(entry), electronEta.at(entry), electronPhi.at(entry), 0);     
+                            l2_ee.SetPtEtaPhiM(electronPT.at(entry), electronEta.at(entry), electronPhi.at(entry), 0);     
                             dileptons_ee = l1_ee + l2_ee;
                             Float_t Mll_ee = TMath::Abs(dileptons_ee.M()*pow(10,7));
                             Missing_ee.SetPtEtaPhiM(missingMET.at(entry), missingEta.at(entry), missingPhi.at(entry), 0.);
@@ -193,14 +163,14 @@ class Analysis
                                     Float_t MT2_ee = calcMT2_ee.Compute();
 
                                     //SR1
-                                    if (PT_miss_ee >= 140 && PT_miss_ee < 200)
+                                    if (PT_miss_ee >= 140 && PT_miss_ee < 200 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_ee_SR1_0j0t -> Fill(PT_miss_ee, weights);
                                         histMET_ee_SR1_0j0t -> Fill(MT2_ee, weights);
                                     }
 
                                     //SR2
-                                    if (PT_miss_ee >= 200 && PT_miss_ee < 300)
+                                    if (PT_miss_ee >= 200 && PT_miss_ee < 300 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_ee_SR2_0j0t -> Fill(PT_miss_ee, weights);
                                         histMET_ee_SR2_0j0t -> Fill(MT2_ee, weights);
@@ -214,14 +184,14 @@ class Analysis
                                     Float_t MT2_ee = calcMT2_ee.Compute();
                                 
                                     //SR1
-                                    if (PT_miss_ee >= 140 && PT_miss_ee < 200)
+                                    if (PT_miss_ee >= 140 && PT_miss_ee < 200 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_ee_SR1_1j0t -> Fill(PT_miss_ee, weights);
                                         histMET_ee_SR1_1j0t -> Fill(MT2_ee, weights);
                                     }
 
                                     //SR2
-                                    if (PT_miss_ee >= 200 && PT_miss_ee < 300)
+                                    if (PT_miss_ee >= 200 && PT_miss_ee < 300 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_ee_SR2_1j0t -> Fill(PT_miss_ee, weights);
                                         histMET_ee_SR2_1j0t -> Fill(MT2_ee, weights);
@@ -240,35 +210,7 @@ class Analysis
                                         histMT2_ee_SR3_0t -> Fill(PT_miss_ee, weights);
                                         histMET_ee_SR3_0t -> Fill(MT2_ee, weights);
                                     }
-                                }
-
-                                if (jetBTag.at(entry) == 1)
-                                {
-                                    Float_t PT_miss_ee = Missing_ee.Pt();
-                                    ComputeMT2 calcMT2_ee = ComputeMT2(l1_ee, l2_ee, Missing_ee);       
-                                    Float_t MT2_ee = calcMT2_ee.Compute();
-                                
-                                    //CR1
-                                    if (PT_miss_ee >= 140 && PT_miss_ee < 200)
-                                    { 
-                                        histMT2_ee_CR1_1t -> Fill(PT_miss_ee, weights);
-                                        histMET_ee_CR1_1t -> Fill(MT2_ee, weights);
-                                    }
-
-                                    //CR2
-                                    if (PT_miss_ee >= 200 && PT_miss_ee < 300)
-                                    { 
-                                        histMT2_ee_CR2_1t -> Fill(PT_miss_ee, weights);
-                                        histMET_ee_CR2_1t -> Fill(MT2_ee, weights);
-                                    }
-
-                                    //CR3
-                                    if (PT_miss_ee >= 300)
-                                    { 
-                                        histMT2_ee_CR3_1t -> Fill(PT_miss_ee, weights);
-                                        histMET_ee_CR3_1t -> Fill(MT2_ee, weights);
-                                    }
-                                }  
+                                } 
                             }      
                         }
                     }            
@@ -299,14 +241,14 @@ class Analysis
                                     Float_t MT2_mumu = calcMT2_mumu.Compute();
 
                                     //SR1
-                                    if (PT_miss_mumu >= 140 && PT_miss_mumu < 200)
+                                    if (PT_miss_mumu >= 140 && PT_miss_mumu < 200 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_mumu_SR1_0j0t -> Fill(PT_miss_mumu, weights);
                                         histMET_mumu_SR1_0j0t -> Fill(MT2_mumu, weights);
                                     }
 
                                     //SR2
-                                    if (PT_miss_mumu >= 200 && PT_miss_mumu < 300)
+                                    if (PT_miss_mumu >= 200 && PT_miss_mumu < 300 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     {    
                                         histMT2_mumu_SR2_0j0t -> Fill(PT_miss_mumu, weights);
                                         histMET_mumu_SR2_0j0t -> Fill(MT2_mumu, weights);
@@ -320,14 +262,14 @@ class Analysis
                                     Float_t MT2_mumu = calcMT2_mumu.Compute();
                                 
                                     //SR1
-                                    if (PT_miss_mumu >= 140 && PT_miss_mumu < 200)
+                                    if (PT_miss_mumu >= 140 && PT_miss_mumu < 200 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_mumu_SR1_1j0t -> Fill(PT_miss_mumu, weights);
                                         histMET_mumu_SR1_1j0t -> Fill(MT2_mumu, weights);
                                     }
 
                                     //SR2
-                                    if (PT_miss_mumu >= 200 && PT_miss_mumu < 300)
+                                    if (PT_miss_mumu >= 200 && PT_miss_mumu < 300 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_mumu_SR2_1j0t -> Fill(PT_miss_mumu, weights);
                                         histMET_mumu_SR2_1j0t -> Fill(MT2_mumu, weights);
@@ -347,34 +289,6 @@ class Analysis
                                         histMET_mumu_SR3_0t -> Fill(MT2_mumu, weights);
                                     }
                                 }
-
-                                if (jetBTag.at(entry) == 1)
-                                {
-                                    Float_t PT_miss_mumu = Missing_mumu.Pt();
-                                    ComputeMT2 calcMT2_mumu = ComputeMT2(l1_mumu, l2_mumu, Missing_mumu);       
-                                    Float_t MT2_mumu = calcMT2_mumu.Compute();
-                                
-                                    //CR1
-                                    if (PT_miss_mumu >= 140 && PT_miss_mumu < 200)
-                                    { 
-                                        histMT2_mumu_CR1_1t -> Fill(PT_miss_mumu, weights);
-                                        histMET_mumu_CR1_1t -> Fill(MT2_mumu, weights);
-                                    }
-
-                                    //CR2
-                                    if (PT_miss_mumu >= 200 && PT_miss_mumu < 300)
-                                    { 
-                                        histMT2_mumu_CR2_1t -> Fill(PT_miss_mumu, weights);
-                                        histMET_mumu_CR2_1t -> Fill(MT2_mumu, weights);
-                                    }
-
-                                    //CR3
-                                    if (PT_miss_mumu >= 300)
-                                    { 
-                                        histMT2_mumu_CR3_1t -> Fill(PT_miss_mumu, weights);
-                                        histMET_mumu_CR3_1t -> Fill(MT2_mumu, weights);
-                                    }
-                                } 
                             }       
                         }
                     }            
@@ -398,7 +312,7 @@ class Analysis
                             Float_t Mll_emu = TMath::Abs(dileptons_emu.M()*pow(10,7));
                             Missing_emu.SetPtEtaPhiM(missingMET.at(entry), missingEta.at(entry), missingPhi.at(entry), 0.);
                             
-                            if (Mll_emu >= 20 && Missing_emu.Pt() >= 140 )
+                            if (Mll_emu >= 20 && Missing_emu.Pt() >= 140)
                             {
                                 if (jetTrigger && jetBTag.at(entry) == 0)
                                 {
@@ -407,14 +321,14 @@ class Analysis
                                     Float_t MT2_emu = calcMT2_emu.Compute();
 
                                     //SR1
-                                    if (PT_miss_emu >= 140 && PT_miss_emu < 200)
+                                    if (PT_miss_emu >= 140 && PT_miss_emu < 200 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_emu_SR1_0j0t -> Fill(PT_miss_emu, weights);
                                         histMET_emu_SR1_0j0t -> Fill(MT2_emu, weights);
                                     }
 
                                     //SR2
-                                    if (PT_miss_emu >= 200 && PT_miss_emu < 300)
+                                    if (PT_miss_emu >= 200 && PT_miss_emu < 300 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_emu_SR2_0j0t -> Fill(PT_miss_emu, weights);
                                         histMET_emu_SR2_0j0t -> Fill(MT2_emu, weights);
@@ -428,14 +342,14 @@ class Analysis
                                     Float_t MT2_emu = calcMT2_emu.Compute();
                                 
                                     //SR1
-                                    if (PT_miss_emu >= 140 && PT_miss_emu < 200)
+                                    if (PT_miss_emu >= 140 && PT_miss_emu < 200 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_emu_SR1_1j0t -> Fill(PT_miss_emu, weights);
                                         histMET_emu_SR1_1j0t -> Fill(MT2_emu, weights);
                                     }
 
                                     //SR2
-                                    if (PT_miss_emu >= 200 && PT_miss_emu < 300)
+                                    if (PT_miss_emu >= 200 && PT_miss_emu < 300 && jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                     { 
                                         histMT2_emu_SR2_1j0t -> Fill(PT_miss_emu, weights);
                                         histMET_emu_SR2_1j0t -> Fill(MT2_emu, weights);
@@ -453,34 +367,6 @@ class Analysis
                                     { 
                                         histMT2_emu_SR3_0t -> Fill(PT_miss_emu, weights);
                                         histMET_emu_SR3_0t -> Fill(MT2_emu, weights);
-                                    }
-                                }
-
-                                if (jetBTag.at(entry) == 1)
-                                {
-                                    Float_t PT_miss_emu = Missing_emu.Pt();
-                                    ComputeMT2 calcMT2_emu = ComputeMT2(l1_emu, l2_emu, Missing_emu);       
-                                    Float_t MT2_emu = calcMT2_emu.Compute();
-                                
-                                    //CR1
-                                    if (PT_miss_emu >= 140 && PT_miss_emu < 200)
-                                    { 
-                                        histMT2_emu_CR1_1t -> Fill(PT_miss_emu, weights);
-                                        histMET_emu_CR1_1t -> Fill(MT2_emu, weights);
-                                    }
-
-                                    //CR2
-                                    if (PT_miss_emu >= 200 && PT_miss_emu < 300)
-                                    { 
-                                        histMT2_emu_CR2_1t -> Fill(PT_miss_emu, weights);
-                                        histMET_emu_CR2_1t -> Fill(MT2_emu, weights);
-                                    }
-
-                                    //CR3
-                                    if (PT_miss_emu >= 300)
-                                    { 
-                                        histMT2_emu_CR3_1t -> Fill(PT_miss_emu, weights);
-                                        histMET_emu_CR3_1t -> Fill(MT2_emu, weights);
                                     }
                                 }
                             }        
@@ -503,8 +389,6 @@ class Analysis
 
             jetPT.fill(0); 
             jetEta.fill(0);
-            jetPhi.fill(0);
-            jetMass.fill(0);
             jetBTag.fill(0);
             
  
@@ -526,16 +410,6 @@ class Analysis
             histMT2_ee_SR3_0t -> Write("", TObject::kOverwrite);
             histMET_ee_SR3_0t -> Write("", TObject::kOverwrite);
 
-            //CRs
-            histMT2_ee_CR1_1t -> Write("", TObject::kOverwrite);
-            histMET_ee_CR1_1t -> Write("", TObject::kOverwrite);
-
-            histMT2_ee_CR2_1t -> Write("", TObject::kOverwrite);
-            histMET_ee_CR2_1t -> Write("", TObject::kOverwrite);
-
-            histMT2_ee_CR3_1t -> Write("", TObject::kOverwrite);
-            histMET_ee_CR3_1t -> Write("", TObject::kOverwrite);
-
             //mumu trigger
             //SRs
             histMT2_mumu_SR1_0j0t -> Write("", TObject::kOverwrite); 
@@ -551,16 +425,6 @@ class Analysis
             histMT2_mumu_SR3_0t -> Write("", TObject::kOverwrite);
             histMET_mumu_SR3_0t -> Write("", TObject::kOverwrite);
 
-            //CRs
-            histMT2_mumu_CR1_1t -> Write("", TObject::kOverwrite);
-            histMET_mumu_CR1_1t -> Write("", TObject::kOverwrite);
-
-            histMT2_mumu_CR2_1t -> Write("", TObject::kOverwrite);
-            histMET_mumu_CR2_1t -> Write("", TObject::kOverwrite);
-
-            histMT2_mumu_CR3_1t -> Write("", TObject::kOverwrite);
-            histMET_mumu_CR3_1t -> Write("", TObject::kOverwrite);
-
             //emu trigger
             //SRs
             histMT2_emu_SR1_0j0t -> Write("", TObject::kOverwrite); 
@@ -575,16 +439,6 @@ class Analysis
 
             histMT2_emu_SR3_0t -> Write("", TObject::kOverwrite);
             histMET_emu_SR3_0t -> Write("", TObject::kOverwrite);
-
-            //CRs
-            histMT2_emu_CR1_1t -> Write("", TObject::kOverwrite);
-            histMET_emu_CR1_1t -> Write("", TObject::kOverwrite);
-
-            histMT2_emu_CR2_1t -> Write("", TObject::kOverwrite);
-            histMET_emu_CR2_1t -> Write("", TObject::kOverwrite);
-
-            histMT2_emu_CR3_1t -> Write("", TObject::kOverwrite);
-            histMET_emu_CR3_1t -> Write("", TObject::kOverwrite);
         }
 
         virtual ~Analysis() 
@@ -595,12 +449,13 @@ class Analysis
 
 void LastReport_Analysis()
 {
-    vector<UInt_t> Runs  = {3, 3, 3};
-    vector<TString> Datasets   = {"/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/signal_try/Events/"
-                                  ,"/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/ttbar_try/Events/"
-                                  ,"/user/e/exphys02/F-sicaExperimental/ExpPhysFinalProyect/CharginoPairProduction/tW_try/Events/"
+    vector<UInt_t> Runs  = {1, 1, 1};
+    vector<TString> Datasets   = {"/data/atlas/dbetalhc/exphys/signal_events/signal/Events/"
+                                  ,"/data/atlas/dbetalhc/exphys/ttbar_events/ttbar/Events/"
+                                  ,"/data/atlas/dbetalhc/exphys/tW_events/tW/Events/"
                                  };
     vector<TString> Hist_names = {"signal", "ttbar", "tW"};
+    //vector<Float_t> Weights  = {0.000021       , 3      ,  19.5};
     vector<Float_t> Weights    = {1       , 1      ,  1};
 
     Analysis *obj1 = new Analysis();

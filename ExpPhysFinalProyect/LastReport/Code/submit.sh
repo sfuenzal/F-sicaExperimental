@@ -1,2 +1,4 @@
-root -q -b LastReport_Analysis.C
-root -q -b LastReport_Plotting.C
+for i in Analysis_Trial.C Plotting_ee.C Plotting_mumu.C Plotting_emu.C
+do 
+    root -q -b LastReport_$i
+done

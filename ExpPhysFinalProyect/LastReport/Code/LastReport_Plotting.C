@@ -66,13 +66,13 @@ class LoopHistograms: public ROOTFile
 					{	
 						if (path != (TString) "Hists_signal.root" && leg_names != (TString) "Signal" && leg_symbols != (TString) "LEP" && color != 0)  
 						{
-							THStack *hs = new THStack("hs", "");
+							//THStack *hs = new THStack("hs", "");
 							leg -> AddEntry(h, leg_names, leg_symbols);
 							h -> SetLineColor(kBlack);
 							h -> SetFillColor(color);
-							hs -> Add(h);
-							//h -> Draw("same");
-							hs -> Draw("hist");
+							//hs -> Add(h);
+							h -> Draw("same");
+							//hs -> Draw("hist");
 						}
 
 						if (path == (TString) "Hists_signal.root" && leg_names == (TString) "Signal" && leg_symbols == (TString) "LEP" && color == 0)
@@ -99,9 +99,9 @@ class LoopHistograms: public ROOTFile
 void LastReport_Plotting()
 {
 	vector<TString> input_histograms_files = {"Hists_signal.root", "Hists_ttbar.root", "Hists_tW.root"};
-	vector<TString> leg_names        = {"Signal", "ttbar", "tW"};
-    vector<TString> leg_symbols      = {"LEP"   , "F" , "F"};
-	vector<UInt_t>  colors           = {0, 416 - 3, 432 - 3};
+	vector<TString> leg_names              = {"Signal", "ttbar", "tW"};
+    vector<TString> leg_symbols            = {"LEP"   , "F" , "F"};
+	vector<UInt_t>  colors                 = {0, 416 - 3, 432 - 3};
 
 	Char_t histMT2_ee_SR1_0j0t[] = "histMT2_ee_SR1_0j0t";
 	Char_t histMET_ee_SR1_0j0t[] = "histMET_ee_SR1_0j0t";
