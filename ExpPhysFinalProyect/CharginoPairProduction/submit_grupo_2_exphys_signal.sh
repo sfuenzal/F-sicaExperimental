@@ -3,7 +3,7 @@
 #SBATCH --job-name=myjob                                                                                                                                                                                            
 #SBATCH -o myjob_out                                                                                                                                                                                                
 #SBATCH -e myjob_err                                                                                                                                                                                                
-#SBATCH --mem-per-cpu=MaxMemPerNode                                                                                                                                                                                 
+#SBATCH --time=72:00:00                                                                                                                                                                                 
 #SBATCH --cpus-per-task=4                                                                                                                                                                                               
 #SBATCH --mail-type=ALL                                                                                                                                                                                             
 #SBATCH --mail-user=sebastian.fuenzalidg@usm.cl                                                                                                                                                                                       

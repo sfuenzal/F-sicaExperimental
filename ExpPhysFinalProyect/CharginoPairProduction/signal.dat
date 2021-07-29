@@ -13,11 +13,11 @@ generate p p > x1- x1+ > vl l- n1 vl~ l+ n1
 add process p p > x1- x1+ > w+ n1 w- n1  
 output /data/atlas/dbetalhc/exphys/signal_events/signal
 launch -i
-multi_run 3
+multi_run 10
 pythia=ON
 pgs=OFF
 delphes=ON
 set ebeam1 7000
 set ebeam2 7000
-set nevents 1000
+set nevents 10000
 print_results --path=/data/atlas/dbetalhc/exphys/signal_events/signal/cs.txt --format=short
