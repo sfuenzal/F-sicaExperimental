@@ -1,6 +1,8 @@
 void LastReport_Plotting_mumu()
 {
-    TFile *f1 = TFile::Open("Hists_signal.root", "READ");
+    UInt_t scale = 100;
+	
+	TFile *f1 = TFile::Open("Hists_signal.root", "READ");
   	TFile *f2 = TFile::Open("Hists_tW.root"    , "READ");
 	TFile *f3 = TFile::Open("Hists_ttbar.root" , "READ");
 
@@ -24,6 +26,8 @@ void LastReport_Plotting_mumu()
   	c -> SetLogy();
 
     histMT2_mumu_1j0t_signal   -> SetLineColor(kBlack);
+	//histMT2_mumu_1j0t_signal  -> Scale((histMT2_mumu_1j0t_tW -> Integral() + histMT2_mumu_1j0t_ttbar -> Integral())/histMT2_mumu_1j0t_signal -> Integral());
+	histMT2_mumu_1j0t_signal  -> Scale(scale);
 	histMT2_mumu_1j0t_tW       -> SetLineColor(kBlack);
   	histMT2_mumu_1j0t_tW       -> SetFillColor(kCyan - 3);
   	histMT2_mumu_1j0t_ttbar    -> SetLineColor(kBlack);
@@ -63,6 +67,8 @@ void LastReport_Plotting_mumu()
   	c -> SetLogy();
 
     histMT2_mumu_1j1t_signal   -> SetLineColor(kBlack);
+	//histMT2_mumu_1j1t_signal  -> Scale((histMT2_mumu_1j1t_tW -> Integral() + histMT2_mumu_1j1t_ttbar -> Integral())/histMT2_mumu_1j1t_signal -> Integral());
+	histMT2_mumu_1j1t_signal  -> Scale(scale);
 	histMT2_mumu_1j1t_tW       -> SetLineColor(kBlack);
   	histMT2_mumu_1j1t_tW       -> SetFillColor(kCyan - 3);
   	histMT2_mumu_1j1t_ttbar    -> SetLineColor(kBlack);
@@ -102,6 +108,8 @@ void LastReport_Plotting_mumu()
   	c -> SetLogy();
 
     histMET_mumu_signal   -> SetLineColor(kBlack);
+	//histMET_mumu_signal  -> Scale((histMET_mumu_tW -> Integral() + histMET_mumu_ttbar -> Integral())/histMET_mumu_signal -> Integral());
+	histMET_mumu_signal  -> Scale(scale);
 	histMET_mumu_tW       -> SetLineColor(kBlack);
   	histMET_mumu_tW       -> SetFillColor(kCyan - 3);
   	histMET_mumu_ttbar    -> SetLineColor(kBlack);

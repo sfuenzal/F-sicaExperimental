@@ -368,8 +368,8 @@ void LastReport_Analysis_Trial()
                                   ,"/data/atlas/dbetalhc/exphys/tW_events/tW/Events/"
                                  };
     vector<TString> Hist_names = {"signal", "ttbar", "tW"};
-    //vector<Float_t> Weights    = {0.06       , 1.2      ,  19.5};
-    vector<Float_t> Weights    = {1       , 1      ,  1};
+    vector<Float_t> Weights    = {0.06       , 1.2      ,  19.5};
+    //vector<Float_t> Weights    = {1       , 1      ,  1};
 
     Analysis *obj1 = new Analysis();
 

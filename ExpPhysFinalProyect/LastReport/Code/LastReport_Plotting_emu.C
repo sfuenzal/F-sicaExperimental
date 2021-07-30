@@ -1,6 +1,8 @@
 void LastReport_Plotting_emu()
-{
-    TFile *f1 = TFile::Open("Hists_signal.root", "READ");
+{	
+	UInt_t scale = 100;
+
+	TFile *f1 = TFile::Open("Hists_signal.root", "READ");
   	TFile *f2 = TFile::Open("Hists_tW.root"    , "READ");
 	TFile *f3 = TFile::Open("Hists_ttbar.root" , "READ");
 
@@ -9,7 +11,7 @@ void LastReport_Plotting_emu()
     TH1F *histMT2_emu_1j0t_signal    = (TH1F*) f1 -> Get("histMT2_emu_1j0t");
   	TH1F *histMT2_emu_1j0t_tW        = (TH1F*) f2 -> Get("histMT2_emu_1j0t");
 	TH1F *histMT2_emu_1j0t_ttbar     = (TH1F*) f3 -> Get("histMT2_emu_1j0t");
-
+	
     THStack *hs_histMT2_emu_1j0t = new THStack("hs_histMT2_emu_1j0t", "");
     
     TLegend *leg_histMT2_emu_1j0t = new TLegend(0.7, 0.70, 0.9, 0.89);
@@ -24,6 +26,8 @@ void LastReport_Plotting_emu()
   	c -> SetLogy();
 
     histMT2_emu_1j0t_signal   -> SetLineColor(kBlack);
+	//histMT2_emu_1j0t_signal  -> Scale((histMT2_emu_1j0t_tW -> Integral() + histMT2_emu_1j0t_ttbar -> Integral())/histMT2_emu_1j0t_signal -> Integral());
+	histMT2_emu_1j0t_signal  -> Scale(scale);
 	histMT2_emu_1j0t_tW       -> SetLineColor(kBlack);
   	histMT2_emu_1j0t_tW       -> SetFillColor(kCyan - 3);
   	histMT2_emu_1j0t_ttbar    -> SetLineColor(kBlack);
@@ -63,6 +67,8 @@ void LastReport_Plotting_emu()
   	c -> SetLogy();
 
     histMT2_emu_1j1t_signal   -> SetLineColor(kBlack);
+	//histMT2_emu_1j1t_signal  -> Scale((histMT2_emu_1j1t_tW -> Integral() + histMT2_emu_1j1t_ttbar -> Integral())/histMT2_emu_1j1t_signal -> Integral());
+	histMT2_emu_1j1t_signal  -> Scale(scale);
 	histMT2_emu_1j1t_tW       -> SetLineColor(kBlack);
   	histMT2_emu_1j1t_tW       -> SetFillColor(kCyan - 3);
   	histMT2_emu_1j1t_ttbar    -> SetLineColor(kBlack);
@@ -102,6 +108,8 @@ void LastReport_Plotting_emu()
   	c -> SetLogy();
 
     histMET_emu_signal   -> SetLineColor(kBlack);
+	//histMET_emu_signal  -> Scale((histMET_emu_tW  -> Integral() + histMET_emu_ttbar -> Integral())/histMET_emu_signal -> Integral());
+	histMET_emu_signal  -> Scale(scale);
 	histMET_emu_tW       -> SetLineColor(kBlack);
   	histMET_emu_tW       -> SetFillColor(kCyan - 3);
   	histMET_emu_ttbar    -> SetLineColor(kBlack);

@@ -1,6 +1,8 @@
 void LastReport_Plotting_ee()
 {
-    TFile *f1 = TFile::Open("Hists_signal.root", "READ");
+    UInt_t scale = 100;
+	
+	TFile *f1 = TFile::Open("Hists_signal.root", "READ");
   	TFile *f2 = TFile::Open("Hists_tW.root"    , "READ");
 	TFile *f3 = TFile::Open("Hists_ttbar.root" , "READ");
 
@@ -24,6 +26,8 @@ void LastReport_Plotting_ee()
   	c -> SetLogy();
 
     histMT2_ee_1j0t_signal   -> SetLineColor(kBlack);
+	//histMT2_ee_1j0t_signal  -> Scale((histMT2_ee_1j0t_tW -> Integral() + histMT2_ee_1j0t_ttbar -> Integral())/histMT2_ee_1j0t_signal -> Integral());
+	histMT2_ee_1j0t_signal  -> Scale(scale);
 	histMT2_ee_1j0t_tW       -> SetLineColor(kBlack);
   	histMT2_ee_1j0t_tW       -> SetFillColor(kCyan - 3);
   	histMT2_ee_1j0t_ttbar    -> SetLineColor(kBlack);
@@ -63,6 +67,8 @@ void LastReport_Plotting_ee()
   	c -> SetLogy();
 
     histMT2_ee_1j1t_signal   -> SetLineColor(kBlack);
+	//histMT2_ee_1j1t_signal  -> Scale((histMT2_ee_1j1t_tW -> Integral() + histMT2_ee_1j1t_ttbar -> Integral())/histMT2_ee_1j1t_signal -> Integral());
+	histMT2_ee_1j1t_signal -> Scale(scale);
 	histMT2_ee_1j1t_tW       -> SetLineColor(kBlack);
   	histMT2_ee_1j1t_tW       -> SetFillColor(kCyan - 3);
   	histMT2_ee_1j1t_ttbar    -> SetLineColor(kBlack);
@@ -102,6 +108,8 @@ void LastReport_Plotting_ee()
   	c -> SetLogy();
 
     histMET_ee_signal   -> SetLineColor(kBlack);
+	//histMET_ee_signal  -> Scale((histMET_ee_tW -> Integral() + histMET_ee_ttbar -> Integral())/histMET_ee_signal -> Integral());
+	histMET_ee_signal -> Scale(scale);
 	histMET_ee_tW       -> SetLineColor(kBlack);
   	histMET_ee_tW       -> SetFillColor(kCyan - 3);
   	histMET_ee_ttbar    -> SetLineColor(kBlack);
