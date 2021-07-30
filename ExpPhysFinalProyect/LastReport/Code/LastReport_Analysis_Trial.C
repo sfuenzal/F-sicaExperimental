@@ -12,6 +12,7 @@ class Analysis
         array<Float_t, 1000000> electronPT_emu, electronEta_emu, electronPhi_emu;
         array<Float_t, 1000000> muonPT_emu, muonEta_emu, muonPhi_emu;
         array<Float_t, 1000000> missingMET, missingEta, missingPhi;
+        array<Float_t, 1000000> CrossSection_ee, CrossSection_mumu, CrossSection_emu;
         array<Float_t, 1000000> jetPT, jetEta;
         array<UInt_t , 1000000> jetBTag;
         bool electronTrigger = false;
@@ -48,25 +49,29 @@ class Analysis
             TClonesArray *branchMuon     = treeReader -> UseBranch("Muon");
             TClonesArray *branchMET	     = treeReader -> UseBranch("MissingET");
             TClonesArray *branchJet	     = treeReader -> UseBranch("Jet");
+            TClonesArray *branchEvent	 = treeReader -> UseBranch("Event");
 
             // ee trigger histograms
             //SRs
             TH1F *histMT2_ee_1j0t   = new TH1F("histMT2_ee_1j0t"  , "MT2 ee 1j0t"         , 15, 0, 500);
             TH1F *histMT2_ee_1j1t   = new TH1F("histMT2_ee_1j1t"  , "MT2 ee 0j1t"         , 15, 0, 500);
             TH1F *histMET_ee        = new TH1F("histMET_ee"       , "p^{miss}_{T} ee"     , 15, 100, 1000);
+            TProfile *cross_section_ee = new TProfile("cross_section_ee", "Cross section vs MT2 ee", 100, 0, 1000, 0, 5);
             
             // mumu trigger histograms
             //SRs
             TH1F *histMT2_mumu_1j0t   = new TH1F("histMT2_mumu_1j0t"  , "MT2 mumu 1j0t"         , 15, 0, 500);
             TH1F *histMT2_mumu_1j1t   = new TH1F("histMT2_mumu_1j1t"  , "MT2 mumu 0j1t"         , 15, 0, 500);
             TH1F *histMET_mumu        = new TH1F("histMET_mumu"       , "p^{miss}_{T} mumu"     , 15, 100, 1000);
+            TProfile *cross_section_mumu = new TProfile("cross_section_mumu", "Cross section vs MT2 mumu", 100, 0, 1000, 0, 5);
 
             // emu trigger histograms
             //SRs
             TH1F *histMT2_emu_1j0t   = new TH1F("histMT2_emu_1j0t"  , "MT2 emu 1j0t"         , 15, 0, 500);
             TH1F *histMT2_emu_1j1t   = new TH1F("histMT2_emu_1j1t"  , "MT2 emu 1j1t"         , 15, 0, 500);
             TH1F *histMET_emu        = new TH1F("histMET_emu"       , "p^{miss}_{T} emu"     , 15, 100, 1000);
-            
+            TProfile *cross_section_emu = new TProfile("cross_section_emu", "Cross section vs MT2 emu", 100, 0, 1000, 0, 5);
+      
             // Loop over all events
             for(UInt_t entry = 0; entry < numberOfEntries; ++entry)
             {
@@ -76,28 +81,34 @@ class Analysis
                 // Load selected branches with data from specified event
                 treeReader -> ReadEntry(entry); 
 
-                if(branchElectron -> GetEntries() == 2) 
+                if(branchElectron -> GetEntries() == 2 && branchMuon -> GetEntries() == 0 && branchEvent -> GetEntries() > 0) 
                 {
                     Electron *electron = (Electron*)  branchElectron -> At(0);
+                    LHEFEvent *event = (LHEFEvent*) branchEvent -> At(0);
+                    CrossSection_ee.fill(event -> CrossSection);
                     electronPT.fill(electron -> PT);
                     electronEta.fill(electron -> Eta);
                     electronPhi.fill(electron -> Phi);
                     !electronTrigger;            
                 }
 
-                if(branchMuon -> GetEntries() == 2) 
+                if(branchElectron -> GetEntries() == 0 && branchMuon -> GetEntries() == 2 && branchEvent -> GetEntries() > 0) 
                 {
                     Muon *muon = (Muon*) branchMuon -> At(0);
+                    LHEFEvent *event = (LHEFEvent*) branchEvent -> At(0);
+                    CrossSection_mumu.fill(event -> CrossSection);
                     muonPT.fill(muon -> PT);
                     muonEta.fill(muon -> Eta);
                     muonPhi.fill(muon -> Phi);
                     !muonTrigger;             
                 }
 
-                if(branchMuon -> GetEntries() == 1 && branchElectron -> GetEntries() == 1)  
+                if(branchMuon -> GetEntries() == 1 && branchElectron -> GetEntries() == 1 && branchEvent -> GetEntries() > 0)  
                 {
                     Electron *electron_emu = (Electron*)  branchElectron -> At(0);
                     Muon *muon_emu = (Muon*) branchMuon -> At(0);
+                    LHEFEvent *event = (LHEFEvent*) branchEvent -> At(0);
+                    CrossSection_emu.fill(event -> CrossSection);
                     electronPT_emu.fill(electron_emu -> PT);
                     electronEta_emu.fill(electron_emu -> Eta);
                     electronPhi_emu.fill(electron_emu -> Phi);
@@ -146,22 +157,21 @@ class Analysis
                                 if (jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                 { 
                                     Float_t PT_miss_ee = Missing_ee.Pt();
+                                    ComputeMT2 calcMT2_ee = ComputeMT2(l1_ee, l2_ee, Missing_ee);       
+                                    Float_t MT2_ee = calcMT2_ee.Compute();
 
                                     if (jetBTag.at(entry) == 0)
                                     {
-                                        ComputeMT2 calcMT2_ee = ComputeMT2(l1_ee, l2_ee, Missing_ee);       
-                                        Float_t MT2_ee = calcMT2_ee.Compute();
                                         histMT2_ee_1j0t -> Fill(MT2_ee, weights);
                                     }
 
                                     if (jetBTag.at(entry) == 1)
                                     {
-                                        ComputeMT2 calcMT2_ee = ComputeMT2(l1_ee, l2_ee, Missing_ee);       
-                                        Float_t MT2_ee = calcMT2_ee.Compute();
                                         histMT2_ee_1j1t -> Fill(MT2_ee, weights);
                                     }
 
                                     histMET_ee -> Fill(PT_miss_ee, weights);
+                                    cross_section_ee -> Fill(MT2_ee, CrossSection_ee.at(entry), 1);
                                 } 
                             }      
                         }
@@ -173,13 +183,13 @@ class Analysis
                 {
                     TLorentzVector l1_mumu, l2_mumu, Missing_mumu, dileptons_mumu;
 
-                    if (electronPT.at(entry) >= 25 && TMath::Abs(electronEta.at(entry)) < 2.4)
+                    if (muonPT.at(entry) >= 25 && TMath::Abs(muonEta.at(entry)) < 2.4)
                     {
-                        l1_mumu.SetPtEtaPhiM(electronPT.at(entry), electronEta.at(entry), electronPhi.at(entry), 0); 
+                        l1_mumu.SetPtEtaPhiM(muonPT.at(entry), muonEta.at(entry), muonPhi.at(entry), 0); 
                         
-                        if (electronPT.at(entry) >= 20 && TMath::Abs(electronEta.at(entry)) < 2.4)
+                        if (muonPT.at(entry) >= 20 && TMath::Abs(muonEta.at(entry)) < 2.4)
                         {
-                            l2_mumu.SetPtEtaPhiM(electronPT.at(entry), electronEta.at(entry), electronPhi.at(entry), 0);     
+                            l2_mumu.SetPtEtaPhiM(muonPT.at(entry), muonEta.at(entry), muonPhi.at(entry), 0);     
                             dileptons_mumu = l1_mumu + l2_mumu;
                             Float_t Mll_mumu = TMath::Abs(dileptons_mumu.M()*pow(10,7));
                             Missing_mumu.SetPtEtaPhiM(missingMET.at(entry), missingEta.at(entry), missingPhi.at(entry), 0.);
@@ -189,22 +199,21 @@ class Analysis
                                 if (jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                 { 
                                     Float_t PT_miss_mumu = Missing_mumu.Pt();
+                                    ComputeMT2 calcMT2_mumu = ComputeMT2(l1_mumu, l2_mumu, Missing_mumu);       
+                                    Float_t MT2_mumu = calcMT2_mumu.Compute();
 
                                     if (jetBTag.at(entry) == 0)
                                     {
-                                        ComputeMT2 calcMT2_mumu = ComputeMT2(l1_mumu, l2_mumu, Missing_mumu);       
-                                        Float_t MT2_mumu = calcMT2_mumu.Compute();
                                         histMT2_mumu_1j0t -> Fill(MT2_mumu, weights);
                                     }
 
                                     if (jetBTag.at(entry) == 1)
                                     {
-                                        ComputeMT2 calcMT2_mumu = ComputeMT2(l1_mumu, l2_mumu, Missing_mumu);       
-                                        Float_t MT2_mumu = calcMT2_mumu.Compute();
                                         histMT2_mumu_1j1t -> Fill(MT2_mumu, weights);
                                     }
 
                                     histMET_mumu -> Fill(PT_miss_mumu, weights);
+                                    cross_section_mumu -> Fill(MT2_mumu, CrossSection_mumu.at(entry), 1);
                                 } 
                             }      
                         }
@@ -233,22 +242,21 @@ class Analysis
                                 if (jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                 { 
                                     Float_t PT_miss_emu = Missing_emu.Pt();
+                                    ComputeMT2 calcMT2_emu = ComputeMT2(l1_emu, l2_emu, Missing_emu);       
+                                    Float_t MT2_emu = calcMT2_emu.Compute();
 
                                     if (jetBTag.at(entry) == 0)
                                     {
-                                        ComputeMT2 calcMT2_emu = ComputeMT2(l1_emu, l2_emu, Missing_emu);       
-                                        Float_t MT2_emu = calcMT2_emu.Compute();
                                         histMT2_emu_1j0t -> Fill(MT2_emu, weights);
                                     }
 
                                     if (jetBTag.at(entry) == 1)
                                     {
-                                        ComputeMT2 calcMT2_emu = ComputeMT2(l1_emu, l2_emu, Missing_emu);       
-                                        Float_t MT2_emu = calcMT2_emu.Compute();
                                         histMT2_emu_1j1t -> Fill(MT2_emu, weights);
                                     }
 
                                     histMET_emu -> Fill(PT_miss_emu, weights);
+                                    cross_section_emu -> Fill(MT2_emu, CrossSection_emu.at(entry), 1);
                                 }
                             }      
                         }
@@ -271,22 +279,21 @@ class Analysis
                                 if (jetPT.at(entry) > 20 && TMath::Abs(jetEta.at(entry)) < 2.4)
                                 { 
                                     Float_t PT_miss_emu = Missing_emu.Pt();
+                                    ComputeMT2 calcMT2_emu = ComputeMT2(l1_emu, l2_emu, Missing_emu);       
+                                    Float_t MT2_emu = calcMT2_emu.Compute();
 
                                     if (jetBTag.at(entry) == 0)
                                     {
-                                        ComputeMT2 calcMT2_emu = ComputeMT2(l1_emu, l2_emu, Missing_emu);       
-                                        Float_t MT2_emu = calcMT2_emu.Compute();
                                         histMT2_emu_1j0t -> Fill(MT2_emu, weights);
                                     }
 
                                     if (jetBTag.at(entry) == 1)
                                     {
-                                        ComputeMT2 calcMT2_emu = ComputeMT2(l1_emu, l2_emu, Missing_emu);       
-                                        Float_t MT2_emu = calcMT2_emu.Compute();
                                         histMT2_emu_1j1t -> Fill(MT2_emu, weights);
                                     }
 
                                     histMET_emu -> Fill(PT_miss_emu, weights);
+                                    cross_section_emu -> Fill(MT2_emu, CrossSection_emu.at(entry), 1);
                                 }
                             }      
                         }
@@ -317,6 +324,10 @@ class Analysis
             jetPT.fill(0); 
             jetEta.fill(0);
             jetBTag.fill(0);
+
+            CrossSection_ee.fill(0);
+            CrossSection_mumu.fill(0);
+            CrossSection_emu.fill(0);
              
             file_name << "Hists_" << hist_names << ".root";
             TFile *f = new TFile(file_name.str().c_str(), "RECREATE");
@@ -326,18 +337,21 @@ class Analysis
             histMT2_ee_1j0t -> Write("", TObject::kOverwrite); 
             histMT2_ee_1j1t -> Write("", TObject::kOverwrite);
             histMET_ee -> Write("", TObject::kOverwrite);
+            cross_section_ee -> Write("", TObject::kOverwrite);
         
             //mumu trigger
             //SRs
             histMT2_mumu_1j0t -> Write("", TObject::kOverwrite); 
             histMT2_mumu_1j1t -> Write("", TObject::kOverwrite);
             histMET_mumu -> Write("", TObject::kOverwrite);
+            cross_section_mumu -> Write("", TObject::kOverwrite);
             
             //emu trigger
             //SRs
             histMT2_emu_1j0t -> Write("", TObject::kOverwrite); 
             histMT2_emu_1j1t -> Write("", TObject::kOverwrite);
             histMET_emu -> Write("", TObject::kOverwrite);
+            cross_section_emu -> Write("", TObject::kOverwrite);
         }
 
         virtual ~Analysis() 
@@ -354,8 +368,7 @@ void LastReport_Analysis_Trial()
                                   ,"/data/atlas/dbetalhc/exphys/tW_events/tW/Events/"
                                  };
     vector<TString> Hist_names = {"signal", "ttbar", "tW"};
-    //vector<Float_t> Weights  = {0.000021       , 3      ,  19.5};
-    //vector<Float_t> Weights    = {0.00021       , 30      ,  195};
+    //vector<Float_t> Weights    = {0.06       , 1.2      ,  19.5};
     vector<Float_t> Weights    = {1       , 1      ,  1};
 
     Analysis *obj1 = new Analysis();
