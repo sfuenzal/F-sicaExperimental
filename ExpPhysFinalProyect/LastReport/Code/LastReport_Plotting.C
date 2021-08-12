@@ -216,20 +216,23 @@ void LastReport_Plotting()
     	obj1 -> OpenROOTFile();
 	}
 
+
+	
 	for (UInt_t i = 0; i < sizeof(aux)/sizeof(aux[0]); ++i)
 	{
 		TCanvas *c1 = new TCanvas("c1", "", 750, 960, 990, 660);
 		c1 -> Draw();
 		c1 -> SetLogy();
-
+		gSystem -> Unlink((TString) aux[i] + (TString) ".png");
+		
 		for (UInt_t j = 0; j < input_histograms_files.size(); ++j)
 		{    	
 			LoopHistograms *obj2 = new LoopHistograms(input_histograms_files.at(j), leg_names.at(j), leg_symbols.at(j), colors.at(j));
     		obj2 -> DrawingHistograms(aux[i]);
 		} 							
 	
-		c1 -> SaveAs((TString) aux[i] + (TString) ".png");
-		c1 -> Clear();
+		c1 -> Print((TString) aux[i] + (TString) ".png");
+		c1 -> Update();
 	}
 }
 

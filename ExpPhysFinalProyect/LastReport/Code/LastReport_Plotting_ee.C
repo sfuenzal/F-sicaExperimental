@@ -33,8 +33,8 @@ void LastReport_Plotting_ee()
   	histMT2_ee_1j0t_ttbar    -> SetLineColor(kBlack);
   	histMT2_ee_1j0t_ttbar    -> SetFillColor(kRed - 3);  
 
-    hs_histMT2_ee_1j0t -> Add(histMT2_ee_1j0t_tW);
 	hs_histMT2_ee_1j0t -> Add(histMT2_ee_1j0t_ttbar);
+    hs_histMT2_ee_1j0t -> Add(histMT2_ee_1j0t_tW);
 
     hs_histMT2_ee_1j0t     -> Draw("Hist");
   	hs_histMT2_ee_1j0t     -> SetTitle("m_{T2} ee trigger 1j0t");
@@ -74,8 +74,8 @@ void LastReport_Plotting_ee()
   	histMT2_ee_1j1t_ttbar    -> SetLineColor(kBlack);
   	histMT2_ee_1j1t_ttbar    -> SetFillColor(kRed - 3);  
 
-    hs_histMT2_ee_1j1t -> Add(histMT2_ee_1j1t_tW);
 	hs_histMT2_ee_1j1t -> Add(histMT2_ee_1j1t_ttbar);
+    hs_histMT2_ee_1j1t -> Add(histMT2_ee_1j1t_tW);
 
     hs_histMT2_ee_1j1t     -> Draw("Hist");
   	hs_histMT2_ee_1j1t     -> SetTitle("m_{T2} ee trigger 1j1t");
@@ -115,8 +115,8 @@ void LastReport_Plotting_ee()
   	histMET_ee_ttbar    -> SetLineColor(kBlack);
   	histMET_ee_ttbar    -> SetFillColor(kRed - 3);  
 
-    hs_histMET_ee -> Add(histMET_ee_tW);
 	hs_histMET_ee -> Add(histMET_ee_ttbar);
+    hs_histMET_ee -> Add(histMET_ee_tW);
 
     hs_histMET_ee     -> Draw("Hist");
   	hs_histMET_ee     -> SetTitle("p^{miss}_{T} ee trigger");

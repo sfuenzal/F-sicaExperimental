@@ -33,8 +33,8 @@ void LastReport_Plotting_emu()
   	histMT2_emu_1j0t_ttbar    -> SetLineColor(kBlack);
   	histMT2_emu_1j0t_ttbar    -> SetFillColor(kRed - 3);  
 
-    hs_histMT2_emu_1j0t -> Add(histMT2_emu_1j0t_tW);
 	hs_histMT2_emu_1j0t -> Add(histMT2_emu_1j0t_ttbar);
+    hs_histMT2_emu_1j0t -> Add(histMT2_emu_1j0t_tW);
 
     hs_histMT2_emu_1j0t     -> Draw("Hist");
   	hs_histMT2_emu_1j0t     -> SetTitle("m_{T2} emu trigger 1j0t");
@@ -74,8 +74,8 @@ void LastReport_Plotting_emu()
   	histMT2_emu_1j1t_ttbar    -> SetLineColor(kBlack);
   	histMT2_emu_1j1t_ttbar    -> SetFillColor(kRed - 3);  
 
-    hs_histMT2_emu_1j1t -> Add(histMT2_emu_1j1t_tW);
 	hs_histMT2_emu_1j1t -> Add(histMT2_emu_1j1t_ttbar);
+    hs_histMT2_emu_1j1t -> Add(histMT2_emu_1j1t_tW);
 
     hs_histMT2_emu_1j1t     -> Draw("Hist");
   	hs_histMT2_emu_1j1t     -> SetTitle("m_{T2} emu trigger 1j1t");
@@ -115,8 +115,8 @@ void LastReport_Plotting_emu()
   	histMET_emu_ttbar    -> SetLineColor(kBlack);
   	histMET_emu_ttbar    -> SetFillColor(kRed - 3);  
 
-    hs_histMET_emu -> Add(histMET_emu_tW);
 	hs_histMET_emu -> Add(histMET_emu_ttbar);
+    hs_histMET_emu -> Add(histMET_emu_tW);
 
     hs_histMET_emu     -> Draw("Hist");
   	hs_histMET_emu     -> SetTitle("p^{miss}_{T} emu trigger");
